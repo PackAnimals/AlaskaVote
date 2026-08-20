@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f766e">
+  <meta name="description" content="Alaska Votes — nonpartisan 2026 U.S. Senate candidate comparison, voting records, campaign money, polling, and issue matcher.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Alaska Votes">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" href="./icons/icon-192.png">
+  <title>Alaska Votes — U.S. Senate 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+:root{
+  --viz-panel:#ffffff;
+  --viz-card:#ffffff;
+  --viz-chip-card:#f4f4f5;
+  --viz-text:#18181b;
+  --viz-muted:#71717a;
+  --viz-border:#d4d4d8;
+  --viz-accent:#0f766e;
+  --viz-accent-text:#ffffff;
+  --viz-accent-bg:#ccfbf1;
+  --viz-accent-bg-subtle:#f0fdfa;
+  --viz-series-1:#2563eb;
+  --viz-series-2:#dc2626;
+  --viz-series-3:#7c3aed;
+  --viz-series-4:#d97706;
+  --viz-series-5:#0891b2;
+  --viz-series-6:#65a30d;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --viz-panel:#111827;
+    --viz-card:#172033;
+    --viz-chip-card:#202b3d;
+    --viz-text:#f8fafc;
+    --viz-muted:#a1a1aa;
+    --viz-border:#3f4b5f;
+    --viz-accent:#2dd4bf;
+    --viz-accent-text:#062925;
+    --viz-accent-bg:#134e4a;
+    --viz-accent-bg-subtle:#102f2c;
+    --viz-series-1:#60a5fa;
+    --viz-series-2:#f87171;
+    --viz-series-3:#a78bfa;
+    --viz-series-4:#fbbf24;
+    --viz-series-5:#22d3ee;
+    --viz-series-6:#a3e635;
+  }
+}
+html{background:var(--viz-panel);color:var(--viz-text)}
+body{margin:0;min-height:100vh;background:var(--viz-panel);color:var(--viz-text)}
+button,select,input{font:inherit}
+.card{
+  border:1px solid var(--viz-border);
+  border-radius:16px;
+  padding:16px;
+  background:var(--viz-card);
+}
+.metric-card{
+  border:1px solid var(--viz-border);
+  border-radius:14px;
+  padding:12px;
+  background:var(--viz-chip-card);
+}
+.viz-node{
+  border:1px solid var(--viz-border);
+  border-radius:16px;
+  padding:14px;
+  background:var(--viz-card);
+}
+.viz-badge{
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding:4px 9px;
+  font-size:.75rem;
+  background:var(--viz-accent-bg);
+  color:var(--viz-text);
+  white-space:nowrap;
+}
+.viz-callout{
+  border-left:4px solid var(--viz-accent);
+  border-radius:12px;
+  padding:12px 14px;
+  background:var(--viz-accent-bg-subtle);
+}
+.viz-stat-value{font-size:1.4rem;font-weight:650;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+  <main class="px-4 pt-2 pb-4">
+<div id="ak-general" class="w-full space-y-6 text-[var(--viz-text)]">
+<style>
+#ak-general{max-width:760px;margin:0 auto;padding:0 0 88px}
+#ak-general .app-header{position:sticky;top:0;z-index:20;background:var(--viz-panel);border-bottom:1px solid var(--viz-border);padding:12px 4px 10px}
+#ak-general .app-kicker{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--viz-muted)}
+#ak-general .app-title{font-size:1.15rem;font-weight:600}
+#ak-general .desktop-tabs{display:none}
+#ak-general .mobile-nav{position:sticky;bottom:8px;z-index:30;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:6px;border:1px solid var(--viz-border);border-radius:18px;background:var(--viz-panel);box-shadow:0 8px 28px rgba(0,0,0,.14)}
+#ak-general .mobile-nav button{min-height:54px;border-radius:14px;padding:6px 4px;font-size:.72rem;line-height:1.05}
+#ak-general .mobile-nav button.active{background:var(--viz-accent);color:var(--viz-accent-text)}
+#ak-general .mobile-nav .nav-icon{display:block;font-size:1rem;margin-bottom:3px}
+#ak-general .more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#ak-general .more-link{border:1px solid var(--viz-border);border-radius:16px;padding:14px;text-align:left;background:var(--viz-card)}
+#ak-general .screen-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+#ak-general .screen-title p{margin-top:4px}
+#ak-general .racebar{height:16px;border-radius:999px;background:var(--viz-border);overflow:hidden;display:flex}
+#ak-general .bar-p{background:var(--viz-series-1)}
+#ak-general .bar-s{background:var(--viz-series-2)}
+#ak-general .bar-j{background:var(--viz-series-3)}
+#ak-general .bar-l{background:var(--viz-series-4)}
+#ak-general .candidate-row{border-bottom:1px solid var(--viz-border)}
+#ak-general .candidate-row:last-child{border-bottom:0}
+#ak-general .score-track{height:10px;border-radius:999px;background:var(--viz-border);overflow:hidden}
+#ak-general .score-fill{height:100%;border-radius:999px;background:var(--viz-accent)}
+#ak-general .tab.active{background:var(--viz-accent);color:var(--viz-accent-text)}
+#ak-general .stance{border-left:3px solid var(--viz-accent);padding-left:12px}
+#ak-general .moneybar{height:10px;border-radius:999px;background:var(--viz-border);overflow:hidden}
+#ak-general .moneyfill{height:100%;border-radius:999px;background:var(--viz-accent)}
+#ak-general .timeline{border-left:2px solid var(--viz-border);margin-left:8px;padding-left:18px}
+#ak-general .timeline-item{position:relative;padding-bottom:18px}
+#ak-general .timeline-item::before{content:"";position:absolute;left:-24px;top:5px;width:10px;height:10px;border-radius:999px;background:var(--viz-accent)}
+@media (min-width:700px){
+ #ak-general{padding-bottom:24px}
+ #ak-general .desktop-tabs{display:flex}
+ #ak-general .mobile-nav{display:none}
+}
+</style>
+
+<header class="app-header">
+  <div class="flex items-center justify-between gap-3">
+    <div>
+      <div class="app-kicker">Alaska Votes</div>
+      <div class="app-title">U.S. Senate · 2026</div>
+    </div>
+    <span class="viz-badge">Mobile test build</span>
+  </div>
+</header>
+
+<section class="space-y-3">
+  <div class="flex flex-wrap items-start justify-between gap-3">
+    <div>
+      <h2 class="text-xl font-medium">The race after the primary</h2>
+      <p class="text-sm text-[var(--viz-muted)]">Latest Alaska Division of Elections unofficial results · 396 of 403 precincts reporting</p>
+    </div>
+    <span class="viz-badge">Nov. 3, 2026</span>
+  </div>
+
+  <div class="racebar" role="img" aria-label="Primary vote: Peltola 48.09%, Dan S. Sullivan 42.74%, Daniel J. Sullivan Jr. 2.44%, David Leslie 1.13%, others 5.6%">
+    <div class="bar-p" style="width:48.09%"></div>
+    <div class="bar-s" style="width:42.74%"></div>
+    <div class="bar-j" style="width:2.44%"></div>
+    <div class="bar-l" style="width:1.13%"></div>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    <div class="metric-card"><div class="text-sm">Mary Peltola</div><div class="viz-stat-value">48.09%</div><div class="text-sm text-[var(--viz-muted)]">63,810 votes · DEM</div></div>
+    <div class="metric-card"><div class="text-sm">Dan S. Sullivan</div><div class="viz-stat-value">42.74%</div><div class="text-sm text-[var(--viz-muted)]">56,717 · REP incumbent</div></div>
+    <div class="metric-card"><div class="text-sm">Daniel J. Sullivan Jr.</div><div class="viz-stat-value">2.44%</div><div class="text-sm text-[var(--viz-muted)]">3,232 · no party shown</div></div>
+    <div class="metric-card"><div class="text-sm">David Leslie</div><div class="viz-stat-value">1.13%</div><div class="text-sm text-[var(--viz-muted)]">1,499 · DEM</div></div>
+  </div>
+  <div class="viz-callout"><strong>Fourth-place watch:</strong> Leslie currently leads Republican Gerald Heikes by only 20 votes. The general-election field can still change as remaining ballots are counted.</div>
+</section>
+
+<nav class="desktop-tabs flex-wrap gap-2" aria-label="App sections">
+  <button type="button" class="tab active rounded-xl border px-3 py-2 text-sm" data-tab="overview">Overview</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="matcher">Where do I stand?</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="issues">Issues</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="record">Voting record</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="money">Money</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="polling">Polling</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="endorsements">Endorsements</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="donors">Donor explorer</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="tracker">Campaign tracker</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="compare">Compare</button>
+</nav>
+
+<section id="overview" class="panel space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Political spectrum</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Approximate placement based on published policy positions rather than party label alone.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+    <div class="viz-node"><div class="font-medium">David Leslie</div><div class="text-sm">Progressive</div><div class="text-sm text-[var(--viz-muted)]">Universal health care · abortion rights · climate regulation · anti-war</div></div>
+    <div class="viz-node"><div class="font-medium">Mary Peltola</div><div class="text-sm">Center-left / Alaska moderate</div><div class="text-sm text-[var(--viz-muted)]">Pro-resource · pro-gun · abortion rights · labor-friendly</div></div>
+    <div class="viz-node"><div class="font-medium">Daniel J. Sullivan Jr.</div><div class="text-sm">Populist / traditional Republican</div><div class="text-sm text-[var(--viz-muted)]">Working families · accountability · Alaska-first</div></div>
+    <div class="viz-node"><div class="font-medium">Dan S. Sullivan</div><div class="text-sm">Conservative Republican</div><div class="text-sm text-[var(--viz-muted)]">Oil & gas · tax cuts · strong military · Trump ally</div></div>
+  </div>
+
+  <div class="card space-y-1">
+    <h3 class="font-medium">What makes this race unusual?</h3>
+    <p class="text-sm">Peltola is significantly more supportive of oil development, gun ownership and border security than a typical national Democratic candidate. Incumbent Sullivan combines conventional Republican economics with a willingness to support some bipartisan Alaska-focused measures, including the 2021 infrastructure law. The two lesser-known finalists sit on opposite sides of the major contenders: Leslie to Peltola's left and Daniel Sullivan Jr. as an anti-establishment alternative on the right.</p>
+  </div>
+</section>
+
+<section id="matcher" class="panel hidden space-y-5">
+  <div>
+    <h2 class="text-lg font-medium">Where Do I Stand?</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Answer each statement and choose how much that issue matters to you. The app will compare your answers with the candidates' published positions.</p>
+  </div>
+  <div id="matcherQuestions" class="space-y-4"></div>
+  <div class="flex flex-wrap gap-2">
+    <button type="button" id="calculateMatch" class="rounded-xl px-4 py-2 bg-[var(--viz-accent)] text-[var(--viz-accent-text)]">Calculate my match</button>
+    <button type="button" id="resetMatch" class="rounded-xl border px-4 py-2">Reset</button>
+  </div>
+  <div id="matcherResults" class="space-y-4" aria-live="polite"></div>
+</section>
+
+<section id="polling" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Polling & race movement</h2>
+    <p class="text-sm text-[var(--viz-muted)]">This app separates actual election results from public polling. Primary results are shown as a baseline; general-election polls can be added as they are released.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Primary leader</div><div class="viz-stat-value">Peltola</div><div class="text-sm">48.09%</div></div>
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Primary margin</div><div class="viz-stat-value">+5.35</div><div class="text-sm">Peltola over D. S. Sullivan</div></div>
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">General polling</div><div class="viz-stat-value">—</div><div class="text-sm">No verified poll loaded in this snapshot</div></div>
+  </div>
+  <div class="card space-y-3">
+    <div class="flex items-center justify-between gap-3"><strong>General-election poll tracker</strong><span class="viz-badge">Snapshot mode</span></div>
+    <p class="text-sm">When a credible Alaska Senate poll is added, this section can show pollster, field dates, sample type, margin, candidate shares and a simple average. Until then, it intentionally avoids converting the primary result into a general-election forecast.</p>
+  </div>
+</section>
+
+<section id="endorsements" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Endorsements</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Organized by political signal rather than just a logo list: national party, Alaska figures, labor, advocacy groups and issue organizations.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="card space-y-3">
+      <div class="flex items-center justify-between gap-3"><strong>Mary Peltola</strong><span class="viz-badge">Democratic coalition</span></div>
+      <div class="text-sm"><strong>National / party:</strong> backed by Democratic Senate campaign infrastructure.</div>
+      <div class="text-sm"><strong>Issue networks:</strong> support from abortion-rights fundraising networks, including EMILY's List-linked donors.</div>
+      <div class="text-sm"><strong>Political signal:</strong> national Democrats view Alaska as a genuine pickup opportunity while Peltola continues to emphasize an Alaska-first brand.</div>
+    </div>
+    <div class="card space-y-3">
+      <div class="flex items-center justify-between gap-3"><strong>Dan S. Sullivan</strong><span class="viz-badge">Republican coalition</span></div>
+      <div class="text-sm"><strong>National / party:</strong> backed by Republican Senate political infrastructure.</div>
+      <div class="text-sm"><strong>Outside support:</strong> conservative outside groups have committed significant independent spending.</div>
+      <div class="text-sm"><strong>Political signal:</strong> Republicans are treating the seat as a priority hold, with Sullivan running on seniority and alignment with the national GOP.</div>
+    </div>
+  </div>
+  <div class="viz-callout">Endorsements are most useful when read as coalition signals. They do not necessarily mean a candidate agrees with every position held by the endorsing group.</div>
+</section>
+
+<section id="donors" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Follow the money</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Explore donor types and compare them with candidate policy positions. This is context, not proof of quid pro quo.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="text-sm">Candidate
+      <select id="donorCandidate" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
+        <option value="peltola">Mary Peltola</option>
+        <option value="sullivan">Dan S. Sullivan</option>
+        <option value="danj">Daniel J. Sullivan Jr.</option>
+        <option value="leslie">David Leslie</option>
+      </select>
+    </label>
+    <label class="text-sm">View
+      <select id="donorView" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
+        <option value="sources">Funding sources</option>
+        <option value="alignment">Policy alignment</option>
+      </select>
+    </label>
+  </div>
+  <div id="donorExplorer"></div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="card space-y-3">
+      <div class="flex items-center justify-between gap-3"><strong>Mary Peltola fundraising mix</strong><span class="viz-badge">Through June 30</span></div>
+      <div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$13.60M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:96%"></div></div></div>
+      <div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$0.56M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:4%"></div></div></div>
+      <div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$1.38M</strong></div></div>
+      <div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$6.09M</strong></div></div>
+      <div class="text-sm"><strong>Geography:</strong> about 13% of itemized individual fundraising in the Q1 snapshot came from Alaska; most dollars came from outside the state.</div>
+      <div class="text-sm"><strong>Named network examples:</strong> ActBlue small-dollar donors · Democratic Senate campaign infrastructure · EMILY's List-linked donors.</div>
+    </div>
+    <div class="card space-y-3">
+      <div class="flex items-center justify-between gap-3"><strong>Dan S. Sullivan fundraising mix</strong><span class="viz-badge">Through June 30</span></div>
+      <div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$3.70M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:67%"></div></div></div>
+      <div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$1.81M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:33%"></div></div></div>
+      <div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$2.69M</strong></div></div>
+      <div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$8.30M</strong></div></div>
+      <div class="text-sm"><strong>Geography:</strong> about 17% of individual contribution dollars in the Q1 snapshot came from Alaska.</div>
+      <div class="text-sm"><strong>Named network examples:</strong> resource/business PACs · defense/government-contractor interests · Republican committees · roughly $250K in Q1 individual contributions reported through AIPAC as a conduit.</div>
+    </div>
+  </div>
+
+  <div class="card space-y-3">
+    <div class="flex items-center justify-between gap-3"><strong>Outside spending</strong><span class="viz-badge">Independent expenditures</span></div>
+    <p class="text-sm">Outside groups can spend independently for or against candidates but cannot legally coordinate that spending with campaigns. A major Republican Senate super PAC announced an additional <strong>$2 million</strong> supporting Dan S. Sullivan in August.</p>
+    <p class="text-sm text-[var(--viz-muted)]">This is separate from money donated directly to Sullivan's campaign and should be evaluated separately from candidate-controlled funds.</p>
+  </div>
+</section>
+
+<section id="tracker" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Campaign tracker</h2>
+    <p class="text-sm text-[var(--viz-muted)]">A chronological log of major race events, finance disclosures, outside spending, debates, endorsements and major campaign shifts.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">Jan. 12, 2026</div>
+      <div class="font-medium">Mary Peltola enters the Senate race</div>
+      <p class="text-sm mt-1">The former U.S. representative launches a challenge to incumbent Dan S. Sullivan, immediately turning the seat into a nationally watched contest.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">Apr. 28, 2026</div>
+      <div class="font-medium">Early fundraising split becomes clear</div>
+      <p class="text-sm mt-1">Public reporting shows Peltola relying much more heavily on individual and small-dollar donors, while Sullivan draws a larger share from PACs, industry groups and political committees.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">June 30, 2026</div>
+      <div class="font-medium">Midyear FEC snapshot</div>
+      <p class="text-sm mt-1">Peltola reports about $13.60M from individuals and $6.09M cash on hand; Sullivan reports about $3.70M from individuals, $1.81M from PACs/committees and $8.30M cash on hand.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">Aug. 11, 2026</div>
+      <div class="font-medium">Republican outside spending increases</div>
+      <p class="text-sm mt-1">A major Republican Senate super PAC announces another $2 million in independent spending to support Sullivan.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">Aug. 18, 2026</div>
+      <div class="font-medium">Top-four primary</div>
+      <p class="text-sm mt-1">Peltola leads the initial count at 48.09%, followed by Dan S. Sullivan at 42.74%. Daniel J. Sullivan Jr. is third; the fourth slot remains extremely close in the current snapshot.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="text-sm text-[var(--viz-muted)]">Next</div>
+      <div class="font-medium">General-election campaign phase</div>
+      <p class="text-sm mt-1">Key items to watch: certified primary results, first credible general-election polling, debates, independent-expenditure buys, new FEC filings, major Alaska endorsements and candidate withdrawals.</p>
+    </div>
+  </div>
+</section>
+
+<section id="issues" class="panel hidden space-y-4">
+  <div class="flex flex-wrap gap-3">
+    <label class="text-sm">Issue
+      <select id="issue" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
+        <option value="energy">Oil, gas & energy</option>
+        <option value="fish">Fisheries & trawling</option>
+        <option value="health">Health care</option>
+        <option value="abortion">Abortion & privacy</option>
+        <option value="guns">Guns</option>
+        <option value="economy">Taxes & economy</option>
+        <option value="immigration">Immigration & border</option>
+        <option value="foreign">Foreign policy</option>
+        <option value="climate">Climate & environment</option>
+        <option value="reform">Government reform</option>
+      </select>
+    </label>
+  </div>
+  <div id="issueCards" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+</section>
+
+<section id="record" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Congressional record</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Only Dan S. Sullivan and Mary Peltola have served in Congress. Use the filters to explore a broader set of consequential votes by issue. “Not in Congress” means the candidate had not yet taken that federal office when the roll call occurred.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="text-sm">Issue
+      <select id="recordIssue" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
+        <option value="all">All issues</option>
+        <option value="energy">Energy & Alaska resources</option>
+        <option value="economy">Taxes, debt & spending</option>
+        <option value="health">Health care</option>
+        <option value="rights">Abortion, guns & civil rights</option>
+        <option value="labor">Labor & workers</option>
+        <option value="immigration">Immigration & border</option>
+        <option value="defense">Defense & foreign policy</option>
+        <option value="infrastructure">Infrastructure & Alaska</option>
+      </select>
+    </label>
+    <label class="text-sm">Candidate
+      <select id="recordCandidate" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
+        <option value="both">Compare both</option>
+        <option value="peltola">Mary Peltola</option>
+        <option value="sullivan">Dan S. Sullivan</option>
+      </select>
+    </label>
+  </div>
+  <div id="recordSummary" class="grid grid-cols-2 sm:grid-cols-4 gap-2"></div>
+  <div class="overflow-x-auto">
+    <table id="recordTable" class="w-full text-sm border-collapse">
+      <thead><tr class="border-b"><th class="text-left py-2 pr-3">Bill / vote</th><th class="text-left p-2">Issue</th><th class="text-left p-2">Peltola</th><th class="text-left p-2">Sullivan</th><th class="text-left p-2">Why it matters</th></tr></thead>
+      <tbody id="recordRows"></tbody>
+    </table>
+  </div>
+  <div class="viz-callout"><strong>Reading the record:</strong> a YES or NO only shows how the member voted on that specific roll call. Large bills often bundle many unrelated provisions, so the explanation column highlights the main policy signal without claiming a vote proves motive.</div>
+  <p class="text-sm text-[var(--viz-muted)]">This is a curated set of major roll calls from Sullivan's Senate tenure and Peltola's 2022–2025 House tenure, not every vote they cast.</p>
+</section>
+
+<section id="money" class="panel hidden space-y-4">
+  <div>
+    <h2 class="text-lg font-medium">Who funds the race?</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Campaign money is useful context, but alignment between a donor and a vote does not prove the donation caused the position.</p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="card space-y-3">
+      <div class="flex justify-between"><strong>Mary Peltola</strong><span class="viz-badge">Individual-heavy</span></div>
+      <p class="text-sm">Her fundraising base is dominated by individual donors, including a very large national small-dollar Democratic network. Democratic leadership organizations and abortion-rights networks also support her.</p>
+      <div><div class="flex justify-between text-sm"><span>Individual-donor dependence</span><span>Very high</span></div><div class="score-track"><div class="score-fill" style="width:96%"></div></div></div>
+      <div class="text-sm"><strong>Notable sources:</strong> small-dollar online donors · Alaska individual donors · Democratic political network · EMILY's List-linked donors.</div>
+    </div>
+    <div class="card space-y-3">
+      <div class="flex justify-between"><strong>Dan S. Sullivan</strong><span class="viz-badge">PAC-heavy mix</span></div>
+      <p class="text-sm">Sullivan has a more traditional incumbent fundraising network with individuals plus substantially more direct PAC, industry, trade-association and political-committee money.</p>
+      <div><div class="flex justify-between text-sm"><span>PAC / institutional role</span><span>Substantial</span></div><div class="score-track"><div class="score-fill" style="width:65%"></div></div></div>
+      <div class="text-sm"><strong>Notable networks:</strong> resource/business interests · defense/government contractor interests · Republican committees · AIPAC-linked individual fundraising.</div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div class="viz-node"><strong>Daniel J. Sullivan Jr.</strong><p class="text-sm mt-1">Far smaller fundraising operation. His campaign is built primarily around anti-establishment messaging rather than a major national donor network.</p></div>
+    <div class="viz-node"><strong>David Leslie</strong><p class="text-sm mt-1">Far smaller fundraising operation than either major candidate; no comparable national fundraising infrastructure.</p></div>
+  </div>
+  <div class="viz-callout">Both major campaigns rely heavily on money from outside Alaska. Peltola nevertheless raised substantially more individual dollars from Alaska than Sullivan in the reporting period previously examined.</div>
+</section>
+
+<section id="compare" class="panel hidden space-y-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <label class="text-sm">Candidate A<select id="candA" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]"></select></label>
+    <label class="text-sm">Candidate B<select id="candB" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]"></select></label>
+  </div>
+  <div id="comparison"></div>
+</section>
+
+<section id="more" class="panel hidden space-y-4">
+  <div class="screen-title">
+    <div>
+      <h2 class="text-lg font-medium">More</h2>
+      <p class="text-sm text-[var(--viz-muted)]">Research tools and race tracking.</p>
+    </div>
+  </div>
+  <div class="more-grid">
+    <button type="button" class="more-link" data-open-tab="record"><strong>Voting record</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Major congressional votes</div></button>
+    <button type="button" class="more-link" data-open-tab="money"><strong>Money</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Fundraising overview</div></button>
+    <button type="button" class="more-link" data-open-tab="donors"><strong>Donor explorer</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Funding sources and alignment</div></button>
+    <button type="button" class="more-link" data-open-tab="polling"><strong>Polling</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Track general-election polls</div></button>
+    <button type="button" class="more-link" data-open-tab="endorsements"><strong>Endorsements</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Coalitions and support</div></button>
+    <button type="button" class="more-link" data-open-tab="tracker"><strong>Campaign tracker</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Timeline of major developments</div></button>
+  </div>
+  <div class="viz-callout"><strong>Testing this build:</strong> use the app directly in ChatGPT to test navigation, issue matching, comparisons, donor views and voting-record filters. The installable PWA build is the next packaging step for testing from your phone's home screen.</div>
+</section>
+
+<section class="space-y-2">
+  <h2 class="text-lg font-medium">Ranked-choice general election</h2>
+  <p class="text-sm">If all four remain on the November ballot, voters rank candidates. If nobody wins a majority of first choices, the lowest candidate is eliminated and those ballots transfer to the voter's next ranked candidate. That makes second-choice support potentially important, especially for voters backing Leslie or Daniel Sullivan Jr.</p>
+</section>
+
+<p class="text-sm text-[var(--viz-muted)]">Snapshot updated Aug. 20, 2026. Primary totals remain unofficial. Issue summaries are condensed from candidates' published platforms, Alaska election materials, congressional voting records and current campaign reporting.</p>
+
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <button type="button" class="mobile-tab active" data-tab="overview"><span class="nav-icon">⌂</span>Home</button>
+  <button type="button" class="mobile-tab" data-tab="issues"><span class="nav-icon">◎</span>Issues</button>
+  <button type="button" class="mobile-tab" data-tab="matcher"><span class="nav-icon">✓</span>My Match</button>
+  <button type="button" class="mobile-tab" data-tab="compare"><span class="nav-icon">⇄</span>Compare</button>
+  <button type="button" class="mobile-tab" data-tab="more"><span class="nav-icon">•••</span>More</button>
+</nav>
+
+<script>
+(()=>{
+ if(window.__akGeneralInit)return;window.__akGeneralInit=true;
+ const data={
+  peltola:{name:'Mary Peltola',party:'Democrat',issues:{energy:'Supports Alaska resource development and previously backed Willow. Favors balancing production with conservation and future-energy investment.',fish:'Signature issue. Calls for aggressive action on bycatch and factory trawling; “Fish, Family, Freedom.”',health:'Protect Medicaid and coverage while lowering health-care costs.',abortion:'Supports abortion access, reproductive rights and individual privacy.',guns:'Supports gun ownership and the Second Amendment while accepting some gun-safety measures.',economy:'Working-family tax relief, lower grocery/housing/childcare/energy costs, infrastructure and labor-friendly policy.',immigration:'Has explicitly supported border security while separating herself from the national Democratic left.',foreign:'Supports the military and aid to U.S. allies; less hawkish than incumbent Sullivan.',climate:'Supports environmental protections but is notably more pro-resource-development than national Democratic orthodoxy.',reform:'Campaigns against special interests, politician self-enrichment and Lower-48 control; supports structural reforms such as term limits.'}},
+  sullivan:{name:'Dan S. Sullivan',party:'Republican · incumbent',issues:{energy:'Strongly favors opening ANWR, NPR-A and Cook Inlet development, Alaska LNG, mining and federal permitting reform.',fish:'Supports bycatch reduction through research, monitoring, gear improvements and restrictions on Russian/Chinese seafood imports.',health:'Republican market-oriented approach; defends GOP fiscal legislation while emphasizing Alaska-specific rural health funding.',abortion:'Conservative and generally anti-abortion.',guns:'Strong gun-rights / Second Amendment record.',economy:'Broad tax cuts, deregulation, resource development and pro-business policy.',immigration:'Strong border enforcement and alignment with Republican immigration policy.',foreign:'Hawkish. Strong military buildup, NATO, Israel support and harder lines toward Russia and China.',climate:'Opposes many federal climate restrictions that limit Alaska development; prioritizes domestic resource production.',reform:'Emphasizes Senate seniority, federal influence and delivery of Alaska projects more than structural political reform.'}},
+  danj:{name:'Daniel J. Sullivan Jr.',party:'No party shown on primary ballot',issues:{energy:'Alaska-first orientation, but much less detailed public policy than the incumbent.',fish:'Community and Alaska-resource concerns; no detailed fisheries package comparable with Peltola or the incumbent.',health:'Limited detailed public platform.',abortion:'Limited detailed public platform.',guns:'Generally traditional Republican / individual-rights orientation; limited detailed plank.',economy:'Emphasizes working families, blue-collar Alaskans and government accountability.',immigration:'Limited detailed public platform.',foreign:'Less developed and less institutionally hawkish than the incumbent.',climate:'Limited detailed public platform.',reform:'Core campaign theme: government accountability, constituent access, fair elections and opposition to political elitism.'}},
+  leslie:{name:'David Leslie',party:'Democrat',issues:{energy:'Supports stronger environmental regulation and a more climate-focused energy transition than Peltola.',fish:'Supports environmental stewardship; fisheries is not as dominant a campaign theme as for Peltola.',health:'Would expand Medicaid, Medicare, VA and Indian Health Service toward universal health care.',abortion:'Strongly supports abortion rights and broader reproductive freedom.',guns:'Not a signature plank in his published campaign material.',economy:'Supports expanded public investment and eventual universal higher education / trade education.',immigration:'Supports a more humane immigration system and expanded rights protections.',foreign:'Significantly less interventionist; has opposed U.S. weapons support in conflicts involving genocide allegations.',climate:'Strong environmental-regulation and climate-action orientation.',reform:'Congressional term limits, stock-trading ban, campaign-finance limits and Supreme Court ethics rules.'}}
+ };
+ const donorData={
+  peltola:{sources:[['Individual donors','Dominant share of campaign contributions, including a large national small-dollar network.'],['Alaska individuals','Meaningful Alaska donor base, though most total dollars still come from outside the state.'],['Democratic committees','Leadership and Senate campaign networks provide institutional support.'],['Abortion-rights network','EMILY\'s List-linked individual fundraising is a visible source.']],alignment:[['Health care / labor','Her donor coalition is broadly consistent with her support for coverage protections, labor priorities and family-cost relief.'],['Abortion rights','Abortion-rights fundraising aligns with her pro-choice record.'],['Resource development','Her pro-oil Alaska positions are less typical of the national Democratic donor base, making this an important point of divergence.']]},
+  sullivan:{sources:[['Individuals','Large individual-donor base, but less dominant than Peltola\'s.'],['PACs / political committees','Substantial direct support from PACs, industry groups, trade associations and Republican committees.'],['Resource / business interests','Energy, business and resource-development networks fit his committee work and Alaska development agenda.'],['AIPAC-linked donors','AIPAC has acted as a conduit for a notable amount of individual giving.'],['Outside GOP spending','Independent conservative groups are also spending to defend the seat.']],alignment:[['Energy / permitting','Resource-sector support aligns with Sullivan\'s push for ANWR, NPR-A, Cook Inlet, LNG and mining development.'],['Defense / foreign policy','Defense-oriented and pro-Israel networks align with his hawkish national-security record.'],['Taxes / business','Business and trade-association support aligns with his tax-cut and deregulation agenda.']]},
+  danj:{sources:[['Small campaign network','Far smaller operation than the two major campaigns.'],['Anti-establishment base','Campaign identity is driven more by outsider and accountability messaging than a national institutional donor network.']],alignment:[['Government reform','His limited donor footprint is consistent with a campaign focused on anti-establishment themes rather than major institutional backing.']]},
+  leslie:{sources:[['Small campaign network','Far smaller fundraising operation than Peltola or the incumbent.'],['Progressive donor base','Where support exists, it is more naturally aligned with progressive and reform-oriented constituencies.']],alignment:[['Universal health care / reform','His policy program is substantially to Peltola\'s left and aligns with progressive movement priorities.'],['Foreign policy','His anti-interventionist stance distinguishes him from both major candidates.']]}
+ };
+ const matcherQuestions=[
+  {id:'energy',label:'Alaska should expand oil and gas development, including projects on federal lands.',issue:'Energy & resources'},
+  {id:'fish',label:'The federal government should impose much stronger restrictions on factory trawling and bycatch in Alaska waters.',issue:'Fisheries'},
+  {id:'health',label:'The federal government should expand or protect public health coverage such as Medicaid and move toward broader universal coverage.',issue:'Health care'},
+  {id:'abortion',label:'Abortion should generally remain legal and protected as a matter of individual privacy.',issue:'Abortion & privacy'},
+  {id:'guns',label:'Federal gun laws should remain relatively limited in order to protect broad Second Amendment rights.',issue:'Guns'},
+  {id:'economy',label:'Federal policy should prioritize broad tax cuts and deregulation over expanding public spending programs.',issue:'Taxes & economy'},
+  {id:'immigration',label:'The federal government should adopt substantially stricter border enforcement and immigration controls.',issue:'Immigration'},
+  {id:'foreign',label:'The United States should maintain a strong global military role and substantial security support for allies.',issue:'Foreign policy'},
+  {id:'climate',label:'Federal climate and environmental protections should take priority even when they restrict some Alaska resource development.',issue:'Climate & environment'},
+  {id:'reform',label:'Congress should adopt stronger structural reforms such as term limits, stock-trading restrictions and tighter campaign-finance rules.',issue:'Government reform'}
+ ];
+ const candidateScores={
+  peltola:{energy:1,fish:2,health:2,abortion:2,guns:1,economy:-1,immigration:1,foreign:1,climate:1,reform:2},
+  sullivan:{energy:2,fish:1,health:-1,abortion:-2,guns:2,economy:2,immigration:2,foreign:2,climate:-2,reform:-1},
+  danj:{energy:1,fish:1,health:0,abortion:-1,guns:1,economy:1,immigration:1,foreign:0,climate:-1,reform:2},
+  leslie:{energy:-1,fish:1,health:2,abortion:2,guns:0,economy:-2,immigration:-1,foreign:-2,climate:2,reform:2}
+ };
+ const recordData=[
+  {date:'Dec. 2017',name:'Tax Cuts and Jobs Act',issue:'economy',label:'Taxes & ANWR',peltola:'Not in Congress',sullivan:'YES',why:'Sullivan backed the major Republican tax overhaul; the law also opened ANWR’s 1002 Area to federal oil leasing.'},
+  {date:'Dec. 2017',name:'ANWR leasing provision in tax reconciliation',issue:'energy',label:'ANWR',peltola:'Not in Congress',sullivan:'YES',why:'A defining Alaska resource vote that authorized oil and gas leasing in ANWR’s coastal plain.'},
+  {date:'May 2018',name:'Congressional Review Act repeal of auto-lending guidance',issue:'economy',label:'Financial regulation',peltola:'Not in Congress',sullivan:'YES',why:'Part of Sullivan’s broader deregulatory voting record.'},
+  {date:'Feb. 2019',name:'Border emergency disapproval resolution',issue:'immigration',label:'Border powers',peltola:'Not in Congress',sullivan:'NO',why:'Voting no supported the Trump administration’s use of emergency authority for border-wall funding.'},
+  {date:'Jan. 2020',name:'First Trump impeachment — abuse of power',issue:'rights',label:'Impeachment',peltola:'Not in Congress',sullivan:'NOT GUILTY',why:'Sullivan voted to acquit President Trump in the first impeachment trial.'},
+  {date:'Jan. 2020',name:'First Trump impeachment — obstruction of Congress',issue:'rights',label:'Impeachment',peltola:'Not in Congress',sullivan:'NOT GUILTY',why:'Second acquittal vote in the 2020 Senate trial.'},
+  {date:'Mar. 2021',name:'American Rescue Plan Act',issue:'economy',label:'COVID spending',peltola:'Not in Congress',sullivan:'NO',why:'Sullivan opposed the $1.9T Democratic pandemic-relief package.'},
+  {date:'Aug. 2021',name:'Infrastructure Investment and Jobs Act',issue:'infrastructure',label:'Infrastructure',peltola:'Not in Congress',sullivan:'YES',why:'A major bipartisan break from many Republicans; Sullivan emphasized Alaska roads, ports, broadband, water and energy infrastructure.'},
+  {date:'Feb. 2022',name:'Postal Service Reform Act',issue:'infrastructure',label:'Government services',peltola:'Not in Congress',sullivan:'YES',why:'Bipartisan measure restructuring Postal Service finances and delivery requirements.'},
+  {date:'Aug. 2022',name:'Inflation Reduction Act',issue:'health',label:'Climate / health / tax',peltola:'Not yet in Congress',sullivan:'NO',why:'Sullivan opposed the Democratic package that included clean-energy incentives, Medicare drug negotiation and corporate tax provisions.'},
+  {date:'Nov. 2022',name:'Respect for Marriage Act — House passage',issue:'rights',label:'LGBTQ rights',peltola:'YES',sullivan:'—',why:'Peltola voted to federally protect recognition of valid same-sex and interracial marriages.'},
+  {date:'Nov. 2022',name:'Respect for Marriage Act — Senate passage',issue:'rights',label:'LGBTQ rights',peltola:'—',sullivan:'YES',why:'Sullivan joined a minority of Senate Republicans supporting federal recognition after religious-liberty language was added.'},
+  {date:'Dec. 2022',name:'FY2023 National Defense Authorization Act',issue:'defense',label:'Defense',peltola:'YES',sullivan:'YES',why:'Both supported the annual defense policy bill, consistent with Alaska’s large military footprint.'},
+  {date:'Feb. 2023',name:'Strategic Production Response Act',issue:'energy',label:'Petroleum reserve',peltola:'YES',sullivan:'—',why:'Peltola backed legislation tying some Strategic Petroleum Reserve releases to expanded federal oil and gas leasing.'},
+  {date:'Mar. 2023',name:'Lower Energy Costs Act / H.R. 1',issue:'energy',label:'Permitting & production',peltola:'YES',sullivan:'—',why:'Peltola crossed party lines to back expanded domestic energy production and permitting reform.'},
+  {date:'May 2023',name:'Fiscal Responsibility Act',issue:'economy',label:'Debt ceiling',peltola:'YES',sullivan:'YES',why:'Both supported the bipartisan debt-limit and spending compromise negotiated by President Biden and Speaker McCarthy.'},
+  {date:'Jul. 2023',name:'FY2024 NDAA — House passage',issue:'defense',label:'Defense',peltola:'NO',sullivan:'—',why:'Peltola opposed the initial House version after conservative social-policy amendments were attached.'},
+  {date:'Dec. 2023',name:'FY2024 NDAA — final compromise',issue:'defense',label:'Defense',peltola:'YES',sullivan:'YES',why:'Both supported the final compromise defense bill, including the military pay raise.'},
+  {date:'Jan. 2024',name:'Tax Relief for American Families and Workers Act',issue:'economy',label:'Child tax credit / business tax',peltola:'YES',sullivan:'—',why:'Peltola backed a bipartisan tax package expanding the child tax credit and restoring several business deductions.'},
+  {date:'Mar. 2024',name:'Laken Riley Act — House passage',issue:'immigration',label:'Immigration enforcement',peltola:'YES',sullivan:'—',why:'Peltola joined Republicans and some Democrats on a tougher immigration-enforcement measure involving detention after certain arrests.'},
+  {date:'Apr. 2024',name:'Ukraine security supplemental',issue:'defense',label:'Ukraine aid',peltola:'YES',sullivan:'YES',why:'Both supported continued U.S. security assistance to Ukraine.'},
+  {date:'Apr. 2024',name:'Israel security supplemental',issue:'defense',label:'Israel aid',peltola:'YES',sullivan:'YES',why:'Both supported additional security assistance for Israel, though Sullivan’s broader record is more consistently hawkish.'},
+  {date:'Apr. 2024',name:'Indo-Pacific security supplemental',issue:'defense',label:'Taiwan / Indo-Pacific',peltola:'YES',sullivan:'YES',why:'Both backed additional Indo-Pacific security funding amid concerns about China.'},
+  {date:'May 2024',name:'FAA Reauthorization Act',issue:'infrastructure',label:'Aviation',peltola:'YES',sullivan:'YES',why:'Important Alaska transportation vote affecting rural aviation, airports and national air-safety programs.'},
+  {date:'Jul. 2024',name:'SAVE Act — proof-of-citizenship voting bill',issue:'rights',label:'Election law',peltola:'NO',sullivan:'—',why:'Peltola opposed the House bill requiring documentary proof of citizenship for federal voter registration.'},
+  {date:'Jul. 2024',name:'PRO Act / labor-rights agenda votes',issue:'labor',label:'Labor',peltola:'Generally YES',sullivan:'Generally NO',why:'Peltola’s House record was substantially more union-friendly; Sullivan generally aligns with Republican opposition to expanded federal collective-bargaining rules.'},
+  {date:'2022–2024',name:'Abortion-access and reproductive-rights votes',issue:'rights',label:'Abortion',peltola:'Generally YES',sullivan:'Generally NO / anti-abortion',why:'Their records reflect one of the clearest ideological differences in the race.'},
+  {date:'2022–2024',name:'Gun-rights / gun-safety votes',issue:'rights',label:'Guns',peltola:'Mixed / pro-2A with some safety measures',sullivan:'Strong gun-rights votes',why:'Peltola is more gun-friendly than most Democrats but still more open to federal gun-safety policy than Sullivan.'},
+  {date:'2023–2024',name:'Alaska resource-development votes',issue:'energy',label:'Alaska energy',peltola:'Frequently pro-development',sullivan:'Consistently pro-development',why:'Both depart from a simple national party stereotype on Alaska resource development, though Sullivan is more uniformly deregulatory.'},
+  {date:'2023–2024',name:'Organized-labor scorecard votes',issue:'labor',label:'Workers',peltola:'Mostly pro-labor',sullivan:'Mostly pro-business',why:'Peltola’s congressional labor voting scores were high; Sullivan’s economic record generally favors employer flexibility and lower regulation.'},
+  {date:'2024',name:'Foreign Intelligence Surveillance Act reauthorization',issue:'rights',label:'Surveillance',peltola:'YES on reauthorization package',sullivan:'YES',why:'Both ultimately supported continued federal surveillance authority with reforms, despite civil-liberties concerns from both left and right.'},
+  {date:'2024',name:'TikTok divest-or-ban legislation',issue:'defense',label:'China / technology',peltola:'YES',sullivan:'YES',why:'Both supported forcing ByteDance to divest TikTok or face a U.S. ban, reflecting bipartisan concern about Chinese influence and data security.'},
+  {date:'2024',name:'Russian uranium import ban',issue:'energy',label:'Russia / energy security',peltola:'YES',sullivan:'YES',why:'Both supported reducing U.S. energy dependence on Russia.'},
+  {date:'2024',name:'Veterans and military quality-of-life appropriations',issue:'defense',label:'Military families',peltola:'Generally YES',sullivan:'Generally YES',why:'Both have consistently emphasized Alaska’s military population and veterans.'},
+  {date:'2025',name:'GOP tax and spending reconciliation law',issue:'economy',label:'Taxes / Medicaid / spending',peltola:'Opposed',sullivan:'YES',why:'A major current dividing line: Sullivan backed the Republican package; Peltola campaigns against its health-care and safety-net effects.'},
+  {date:'2025',name:'Alaska resource provisions in reconciliation',issue:'energy',label:'ANWR / NPR-A / resource access',peltola:'Supports development but opposed overall package',sullivan:'YES',why:'Shows the difference between supporting Alaska development in principle and accepting the broader Republican fiscal package used to enact it.'}
+ ];
+ const tabs=document.querySelectorAll('.tab'),mobileTabs=document.querySelectorAll('.mobile-tab'),panels=document.querySelectorAll('.panel');
+ function openTab(id){
+  tabs.forEach(x=>x.classList.toggle('active',x.dataset.tab===id));
+  mobileTabs.forEach(x=>x.classList.toggle('active',x.dataset.tab===id || (id!=='overview'&&id!=='issues'&&id!=='matcher'&&id!=='compare'&&x.dataset.tab==='more')));
+  panels.forEach(p=>p.classList.add('hidden'));
+  const target=document.getElementById(id);if(target)target.classList.remove('hidden');
+  window.scrollTo({top:0,behavior:'smooth'});
+ }
+ tabs.forEach(t=>t.addEventListener('click',()=>openTab(t.dataset.tab)));
+ mobileTabs.forEach(t=>t.addEventListener('click',()=>openTab(t.dataset.tab)));
+ document.querySelectorAll('[data-open-tab]').forEach(t=>t.addEventListener('click',()=>openTab(t.dataset.openTab)));
+ const matcherWrap=document.getElementById('matcherQuestions');
+ const answerLabels=['Strongly disagree','Disagree','Neutral / unsure','Agree','Strongly agree'];
+ matcherWrap.innerHTML=matcherQuestions.map((q,idx)=>`<div class="card space-y-3"><div class="font-medium">${idx+1}. ${q.label}</div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3"><label class="text-sm">Your position<select class="matcher-answer mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]" data-id="${q.id}">${answerLabels.map((l,i)=>`<option value="${i-2}" ${i===2?'selected':''}>${l}</option>`).join('')}</select></label><label class="text-sm">Importance<select class="matcher-weight mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]" data-id="${q.id}"><option value="1">Low</option><option value="2" selected>Medium</option><option value="3">High</option></select></label></div></div>`).join('');
+ function calcMatcher(){
+  const responses={};
+  document.querySelectorAll('.matcher-answer').forEach(el=>responses[el.dataset.id]={answer:Number(el.value),weight:2});
+  document.querySelectorAll('.matcher-weight').forEach(el=>responses[el.dataset.id].weight=Number(el.value));
+  const results=Object.entries(candidateScores).map(([id,scores])=>{
+   let weightedDistance=0,maxDistance=0;
+   const breakdown=[];
+   matcherQuestions.forEach(q=>{const r=responses[q.id],cand=scores[q.id]??0,d=Math.abs(r.answer-cand);weightedDistance+=d*r.weight;maxDistance+=4*r.weight;breakdown.push({issue:q.issue,distance:d,weight:r.weight})});
+   return {id,pct:Math.round((1-weightedDistance/maxDistance)*100),breakdown};
+  }).sort((a,b)=>b.pct-a.pct);
+  const names={peltola:'Mary Peltola',sullivan:'Dan S. Sullivan',danj:'Daniel J. Sullivan Jr.',leslie:'David Leslie'},top=results[0];
+  document.getElementById('matcherResults').innerHTML=`<div class="viz-callout"><strong>Closest overall match: ${names[top.id]} — ${top.pct}%</strong><br><span class="text-sm">This is an issue-alignment score, not an endorsement or election prediction.</span></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${results.map(r=>`<div class="metric-card"><div class="text-sm">${names[r.id]}</div><div class="viz-stat-value">${r.pct}%</div><div class="score-track mt-2"><div class="score-fill" style="width:${r.pct}%"></div></div></div>`).join('')}</div><div class="space-y-2"><h3 class="font-medium">Why the top match scored highest</h3>${top.breakdown.map(b=>`<div class="candidate-row py-2"><div class="flex justify-between gap-3 text-sm"><span>${b.issue}</span><strong>${Math.max(0,100-Math.round((b.distance/4)*100))}% fit</strong></div><div class="text-sm text-[var(--viz-muted)]">Importance: ${b.weight===3?'High':b.weight===2?'Medium':'Low'}</div></div>`).join('')}</div><p class="text-sm text-[var(--viz-muted)]">Method: candidate positions are scored from -2 to +2 using the sourced issue summaries in this app. Your answers use the same scale. Distance is weighted by the importance you assign each issue and normalized into a percentage. Neutral or unclear candidate positions are scored 0.</p>`;
+ }
+ document.getElementById('calculateMatch').addEventListener('click',calcMatcher);
+ document.getElementById('resetMatch').addEventListener('click',()=>{document.querySelectorAll('.matcher-answer').forEach(el=>el.value='0');document.querySelectorAll('.matcher-weight').forEach(el=>el.value='2');document.getElementById('matcherResults').innerHTML=''});
+ const issue=document.getElementById('issue'),cards=document.getElementById('issueCards');
+ function renderIssues(){cards.innerHTML=Object.values(data).map(c=>`<article class="viz-node"><div class="flex justify-between gap-2"><strong>${c.name}</strong><span class="text-sm text-[var(--viz-muted)]">${c.party}</span></div><p class="stance text-sm mt-3">${c.issues[issue.value]}</p></article>`).join('')}
+ issue.addEventListener('change',renderIssues);renderIssues();
+ const donorCandidate=document.getElementById('donorCandidate'),donorView=document.getElementById('donorView'),donorExplorer=document.getElementById('donorExplorer');
+ function renderDonors(){const c=data[donorCandidate.value],items=donorData[donorCandidate.value][donorView.value];donorExplorer.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>${c.name}</strong><span class="viz-badge">${donorView.value==='sources'?'Funding profile':'Donor-policy context'}</span></div>${items.map(x=>`<div class="candidate-row py-3"><div class="font-medium text-sm">${x[0]}</div><div class="text-sm mt-1">${x[1]}</div></div>`).join('')}</div>`}
+ donorCandidate.addEventListener('change',renderDonors);donorView.addEventListener('change',renderDonors);renderDonors();
+ const recordIssue=document.getElementById('recordIssue'),recordCandidate=document.getElementById('recordCandidate'),recordRows=document.getElementById('recordRows'),recordSummary=document.getElementById('recordSummary');
+ function renderRecord(){
+  const issueFilter=recordIssue.value,candidateFilter=recordCandidate.value;
+  const filtered=recordData.filter(r=>issueFilter==='all'||r.issue===issueFilter);
+  recordRows.innerHTML=filtered.map(r=>`<tr class="candidate-row"><td class="py-3 pr-3"><div class="font-medium">${r.name}</div><div class="text-sm text-[var(--viz-muted)]">${r.date}</div></td><td class="p-2">${r.label}</td><td class="p-2 ${candidateFilter==='sullivan'?'text-[var(--viz-muted)]':''}">${candidateFilter==='sullivan'?'—':`<strong>${r.peltola}</strong>`}</td><td class="p-2 ${candidateFilter==='peltola'?'text-[var(--viz-muted)]':''}">${candidateFilter==='peltola'?'—':`<strong>${r.sullivan}</strong>`}</td><td class="p-2">${r.why}</td></tr>`).join('');
+  const pVotes=filtered.filter(r=>!['Not in Congress','Not yet in Congress','—'].includes(r.peltola)).length;
+  const sVotes=filtered.filter(r=>!['Not in Congress','—'].includes(r.sullivan)).length;
+  recordSummary.innerHTML=`<div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Votes shown</div><div class="viz-stat-value">${filtered.length}</div></div><div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Peltola record entries</div><div class="viz-stat-value">${pVotes}</div></div><div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Sullivan record entries</div><div class="viz-stat-value">${sVotes}</div></div><div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Issue filter</div><div class="text-sm font-medium mt-2">${recordIssue.options[recordIssue.selectedIndex].text}</div></div>`;
+ }
+ recordIssue.addEventListener('change',renderRecord);recordCandidate.addEventListener('change',renderRecord);renderRecord();
+ const a=document.getElementById('candA'),b=document.getElementById('candB'),comp=document.getElementById('comparison');
+ Object.entries(data).forEach(([id,c])=>{[a,b].forEach(s=>{const o=document.createElement('option');o.value=id;o.textContent=c.name;s.appendChild(o)})});a.value='peltola';b.value='sullivan';
+ const labels={energy:'Oil, gas & energy',fish:'Fisheries',health:'Health care',abortion:'Abortion & privacy',guns:'Guns',economy:'Taxes & economy',immigration:'Immigration',foreign:'Foreign policy',climate:'Climate',reform:'Government reform'};
+ function renderCompare(){const A=data[a.value],B=data[b.value];comp.innerHTML=`<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="border-b"><th class="text-left py-2">Issue</th><th class="text-left p-2">${A.name}</th><th class="text-left p-2">${B.name}</th></tr></thead><tbody>${Object.keys(labels).map(k=>`<tr class="candidate-row"><td class="py-3 pr-3 font-medium">${labels[k]}</td><td class="p-2">${A.issues[k]}</td><td class="p-2">${B.issues[k]}</td></tr>`).join('')}</tbody></table></div>`}
+ a.addEventListener('change',renderCompare);b.addEventListener('change',renderCompare);renderCompare();
+})();
+</script>
+</div>
+  </main>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+    }
+  </script>
+</body>
+</html>
