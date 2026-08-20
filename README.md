@@ -1,71 +1,54 @@
 # Alaska Votes
 
-Mobile-first, installable PWA for researching Alaska's 2026 U.S. Senate race.
+GitHub-ready PWA test build for Alaska's 2026 elections.
 
-## Fastest way to test with GitHub Pages
+## What's included
 
-1. Create a new GitHub repository named `alaska-votes`.
-2. Upload **all files and folders** from this package to the repository root.
-3. Commit them to the `main` branch.
-4. In GitHub, open **Settings → Pages**.
-5. Under **Build and deployment → Source**, choose **GitHub Actions**.
-6. Open the **Actions** tab. The included `Deploy to GitHub Pages` workflow will publish the site.
-7. When deployment finishes, GitHub will show the public URL.
+- Selectable race menu
+- U.S. Senate
+- U.S. House
+- Governor
+- All 10 State Senate districts on the 2026 ballot
+- All 40 State House districts
+- Alaska ballot measures
+- Senate candidate issue comparison
+- Where Do I Stand? matcher
+- Congressional voting records
+- Money Trail and donor explorer
+- Polling, endorsements and campaign tracker
+- Mobile bottom navigation
+- Installable PWA files
 
-Typical URL:
+## GitHub Pages setup
 
-`https://YOUR-GITHUB-USERNAME.github.io/alaska-votes/`
+1. Create or open your `alaska-votes` repository.
+2. Replace the existing files with the contents of this package.
+3. Keep the folder named exactly `.github`.
+4. Commit to `main`.
+5. Go to **Settings → Pages**.
+6. Under **Build and deployment**, choose **GitHub Actions**.
+7. The included workflow will deploy the static site.
+
+If GitHub's browser uploader won't accept `.github`, create the workflow directly in GitHub using **Add file → Create new file** and name it:
+
+`.github/workflows/pages.yml`
+
+Then paste the contents of the provided `pages.yml`.
 
 ## Test on iPhone
 
-1. Open the GitHub Pages URL in Safari.
-2. Tap **Share**.
-3. Tap **Add to Home Screen**.
-4. Launch **Alaska Votes** from the new icon.
+Open the published GitHub Pages URL in Safari → Share → **Add to Home Screen**.
 
-The PWA uses standalone display mode and includes a basic service worker for offline caching.
+## Test locally
 
-## Test on Android
-
-Open the site in Chrome and choose **Install app** or **Add to Home screen**.
-
-## Vercel alternative
-
-Import the GitHub repository at Vercel. This is a static site; no build command is required. Vercel will redeploy automatically whenever `main` changes.
-
-## Files
-
-- `index.html` — current Alaska Votes application
-- `manifest.webmanifest` — PWA metadata
-- `service-worker.js` — offline/app caching
-- `icons/` — install icons
-- `.github/workflows/pages.yml` — automatic GitHub Pages deployment
-- `vercel.json` — optional Vercel configuration
-
-## Current limitations
-
-This is a test build. Election data is currently embedded in the front-end snapshot rather than loaded from a live database/API. Before public launch, add primary-source citations to every substantive policy/voting-record claim and move rapidly changing election, polling, and campaign-finance data into a maintained data layer.
-
-## Recommended next architecture
-
-For production:
-
-- Front end: this PWA, later optionally refactored to React/Vite
-- Database/API: Supabase/Postgres
-- Federal campaign finance: FEC data
-- Congressional votes: official House/Senate/Congress.gov sources
-- Alaska election results: Alaska Division of Elections
-- Native packaging: Capacitor for iOS + Android
-
-## Local testing
-
-Because service workers require HTTP/HTTPS rather than `file://`, run a tiny local web server from the repo directory:
+From this folder:
 
 ```bash
 python -m http.server 8080
 ```
 
-Then open:
+Then open `http://localhost:8080`.
 
-`http://localhost:8080`
+## Important
 
+This remains a test snapshot. Rapidly changing election data should eventually move into a live backend and all substantive public-facing claims should carry primary-source citations.

@@ -4,91 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0f766e">
-  <meta name="description" content="Alaska Votes — nonpartisan 2026 U.S. Senate candidate comparison, voting records, campaign money, polling, and issue matcher.">
+  <meta name="description" content="Alaska Votes — statewide, legislative and ballot measure research for Alaska elections.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Alaska Votes">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
   <link rel="icon" href="./icons/icon-192.png">
-  <title>Alaska Votes — U.S. Senate 2026</title>
+  <title>Alaska Votes 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
 :root{
-  --viz-panel:#ffffff;
-  --viz-card:#ffffff;
-  --viz-chip-card:#f4f4f5;
-  --viz-text:#18181b;
-  --viz-muted:#71717a;
-  --viz-border:#d4d4d8;
-  --viz-accent:#0f766e;
-  --viz-accent-text:#ffffff;
-  --viz-accent-bg:#ccfbf1;
-  --viz-accent-bg-subtle:#f0fdfa;
-  --viz-series-1:#2563eb;
-  --viz-series-2:#dc2626;
-  --viz-series-3:#7c3aed;
-  --viz-series-4:#d97706;
-  --viz-series-5:#0891b2;
-  --viz-series-6:#65a30d;
+  --viz-panel:#ffffff;--viz-card:#ffffff;--viz-chip-card:#f4f4f5;--viz-text:#18181b;
+  --viz-muted:#71717a;--viz-border:#d4d4d8;--viz-accent:#0f766e;--viz-accent-text:#ffffff;
+  --viz-accent-bg:#ccfbf1;--viz-accent-bg-subtle:#f0fdfa;--viz-series-1:#2563eb;
+  --viz-series-2:#dc2626;--viz-series-3:#7c3aed;--viz-series-4:#d97706;
+  --viz-series-5:#0891b2;--viz-series-6:#65a30d;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --viz-panel:#111827;
-    --viz-card:#172033;
-    --viz-chip-card:#202b3d;
-    --viz-text:#f8fafc;
-    --viz-muted:#a1a1aa;
-    --viz-border:#3f4b5f;
-    --viz-accent:#2dd4bf;
-    --viz-accent-text:#062925;
-    --viz-accent-bg:#134e4a;
-    --viz-accent-bg-subtle:#102f2c;
-    --viz-series-1:#60a5fa;
-    --viz-series-2:#f87171;
-    --viz-series-3:#a78bfa;
-    --viz-series-4:#fbbf24;
-    --viz-series-5:#22d3ee;
-    --viz-series-6:#a3e635;
+    --viz-panel:#111827;--viz-card:#172033;--viz-chip-card:#202b3d;--viz-text:#f8fafc;
+    --viz-muted:#a1a1aa;--viz-border:#3f4b5f;--viz-accent:#2dd4bf;--viz-accent-text:#062925;
+    --viz-accent-bg:#134e4a;--viz-accent-bg-subtle:#102f2c;--viz-series-1:#60a5fa;
+    --viz-series-2:#f87171;--viz-series-3:#a78bfa;--viz-series-4:#fbbf24;
+    --viz-series-5:#22d3ee;--viz-series-6:#a3e635;
   }
 }
-html{background:var(--viz-panel);color:var(--viz-text)}
-body{margin:0;min-height:100vh;background:var(--viz-panel);color:var(--viz-text)}
+html,body{background:var(--viz-panel);color:var(--viz-text)}
+body{margin:0;min-height:100vh}
 button,select,input{font:inherit}
-.card{
-  border:1px solid var(--viz-border);
-  border-radius:16px;
-  padding:16px;
-  background:var(--viz-card);
-}
-.metric-card{
-  border:1px solid var(--viz-border);
-  border-radius:14px;
-  padding:12px;
-  background:var(--viz-chip-card);
-}
-.viz-node{
-  border:1px solid var(--viz-border);
-  border-radius:16px;
-  padding:14px;
-  background:var(--viz-card);
-}
-.viz-badge{
-  display:inline-flex;
-  align-items:center;
-  border-radius:999px;
-  padding:4px 9px;
-  font-size:.75rem;
-  background:var(--viz-accent-bg);
-  color:var(--viz-text);
-  white-space:nowrap;
-}
-.viz-callout{
-  border-left:4px solid var(--viz-accent);
-  border-radius:12px;
-  padding:12px 14px;
-  background:var(--viz-accent-bg-subtle);
-}
+.card{border:1px solid var(--viz-border);border-radius:16px;padding:16px;background:var(--viz-card)}
+.metric-card{border:1px solid var(--viz-border);border-radius:14px;padding:12px;background:var(--viz-chip-card)}
+.viz-node{border:1px solid var(--viz-border);border-radius:16px;padding:14px;background:var(--viz-card)}
+.viz-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.75rem;background:var(--viz-accent-bg);color:var(--viz-text);white-space:nowrap}
+.viz-callout{border-left:4px solid var(--viz-accent);border-radius:12px;padding:12px 14px;background:var(--viz-accent-bg-subtle)}
 .viz-stat-value{font-size:1.4rem;font-weight:650;letter-spacing:-.02em}
 </style>
 </head>
@@ -100,6 +49,7 @@ button,select,input{font:inherit}
 #ak-general .app-header{position:sticky;top:0;z-index:20;background:var(--viz-panel);border-bottom:1px solid var(--viz-border);padding:12px 4px 10px}
 #ak-general .app-kicker{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--viz-muted)}
 #ak-general .app-title{font-size:1.15rem;font-weight:600}
+#ak-general .race-select{min-width:210px;border:1px solid var(--viz-border);border-radius:12px;padding:8px 10px;background:var(--viz-panel);color:var(--viz-text);font-size:.9rem}
 #ak-general .desktop-tabs{display:none}
 #ak-general .mobile-nav{position:sticky;bottom:8px;z-index:30;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:6px;border:1px solid var(--viz-border);border-radius:18px;background:var(--viz-panel);box-shadow:0 8px 28px rgba(0,0,0,.14)}
 #ak-general .mobile-nav button{min-height:54px;border-radius:14px;padding:6px 4px;font-size:.72rem;line-height:1.05}
@@ -136,11 +86,37 @@ button,select,input{font:inherit}
   <div class="flex items-center justify-between gap-3">
     <div>
       <div class="app-kicker">Alaska Votes</div>
-      <div class="app-title">U.S. Senate · 2026</div>
+      <div class="app-title">Choose Your Race</div>
     </div>
-    <span class="viz-badge">Mobile test build</span>
+    <select id="raceSelect" class="race-select" aria-label="Select race">
+      <option value="" selected disabled>Choose your race…</option>
+      <option value="senate">U.S. Senate</option>
+      <option value="house">U.S. House</option>
+      <option value="governor">Governor</option>
+      <option value="state-senate">State Senate</option>
+      <option value="state-house">State House</option>
+      <option value="ballot">Ballot Measures</option>
+    </select>
   </div>
 </header>
+
+<section id="racePlaceholder" class="hidden space-y-4">
+  <div class="screen-title">
+    <div>
+      <h2 class="text-xl font-medium" id="placeholderTitle"></h2>
+      <p class="text-sm text-[var(--viz-muted)]" id="placeholderSubtitle"></p>
+    </div>
+    <span class="viz-badge">2026</span>
+  </div>
+  <div id="raceCards" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+  <div id="districtPicker" class="hidden card space-y-3">
+    <label class="text-sm">Choose district
+      <select id="districtSelect" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]"></select>
+    </label>
+  </div>
+  <div id="selectedRaceDetail" class="space-y-3"></div>
+  <div class="viz-callout"><strong>All-race navigation is live.</strong> Statewide contests, legislative districts and ballot measures now use the same selectable race framework so each contest can carry candidate profiles, issue positions, records, money and comparisons.</div>
+</section>
 
 <section class="space-y-3">
   <div class="flex flex-wrap items-start justify-between gap-3">
@@ -168,10 +144,10 @@ button,select,input{font:inherit}
 
 <nav class="desktop-tabs flex-wrap gap-2" aria-label="App sections">
   <button type="button" class="tab active rounded-xl border px-3 py-2 text-sm" data-tab="overview">Overview</button>
+  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="money">Money Trail</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="matcher">Where do I stand?</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="issues">Issues</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="record">Voting record</button>
-  <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="money">Money</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="polling">Polling</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="endorsements">Endorsements</button>
   <button type="button" class="tab rounded-xl border px-3 py-2 text-sm" data-tab="donors">Donor explorer</button>
@@ -195,6 +171,7 @@ button,select,input{font:inherit}
     <h3 class="font-medium">What makes this race unusual?</h3>
     <p class="text-sm">Peltola is significantly more supportive of oil development, gun ownership and border security than a typical national Democratic candidate. Incumbent Sullivan combines conventional Republican economics with a willingness to support some bipartisan Alaska-focused measures, including the 2021 infrastructure law. The two lesser-known finalists sit on opposite sides of the major contenders: Leslie to Peltola's left and Daniel Sullivan Jr. as an anti-establishment alternative on the right.</p>
   </div>
+  <button type="button" class="more-link w-full" data-open-tab="money"><strong>Follow the Money →</strong><div class="text-sm text-[var(--viz-muted)] mt-1">See total fundraising, individual vs. PAC money, Alaska vs. outside-Alaska donors, named donor networks and outside spending.</div></button>
 </section>
 
 <section id="matcher" class="panel hidden space-y-5">
@@ -398,9 +375,16 @@ button,select,input{font:inherit}
 
 <section id="money" class="panel hidden space-y-4">
   <div>
-    <h2 class="text-lg font-medium">Who funds the race?</h2>
-    <p class="text-sm text-[var(--viz-muted)]">Campaign money is useful context, but alignment between a donor and a vote does not prove the donation caused the position.</p>
+    <h2 class="text-xl font-medium">Follow the Money</h2>
+    <p class="text-sm text-[var(--viz-muted)]">Track how much each campaign raises, who gives it, where the money comes from and which outside groups are spending in the race. Funding alignment is context, not proof that a donation caused a position.</p>
   </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Peltola receipts</div><div class="viz-stat-value">$15.58M</div><div class="text-sm">2025–26 cycle snapshot</div></div>
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Sullivan receipts</div><div class="viz-stat-value">$8.50M</div><div class="text-sm">2025–26 cycle snapshot</div></div>
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Peltola individuals</div><div class="viz-stat-value">$13.60M</div><div class="text-sm">Dominant funding source</div></div>
+    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Sullivan PACs</div><div class="viz-stat-value">$1.81M</div><div class="text-sm">Direct committee/PAC support</div></div>
+  </div>
+  <button type="button" class="more-link w-full" data-open-tab="donors"><strong>Open Donor Explorer →</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Drill into donor types, named networks and donor-policy alignment.</div></button>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
     <div class="card space-y-3">
       <div class="flex justify-between"><strong>Mary Peltola</strong><span class="viz-badge">Individual-heavy</span></div>
@@ -439,7 +423,7 @@ button,select,input{font:inherit}
   </div>
   <div class="more-grid">
     <button type="button" class="more-link" data-open-tab="record"><strong>Voting record</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Major congressional votes</div></button>
-    <button type="button" class="more-link" data-open-tab="money"><strong>Money</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Fundraising overview</div></button>
+    <button type="button" class="more-link" data-open-tab="money"><strong>Money Trail</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Fundraising, geography and outside spending</div></button>
     <button type="button" class="more-link" data-open-tab="donors"><strong>Donor explorer</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Funding sources and alignment</div></button>
     <button type="button" class="more-link" data-open-tab="polling"><strong>Polling</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Track general-election polls</div></button>
     <button type="button" class="more-link" data-open-tab="endorsements"><strong>Endorsements</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Coalitions and support</div></button>
@@ -457,7 +441,7 @@ button,select,input{font:inherit}
 
 <nav class="mobile-nav" aria-label="Mobile navigation">
   <button type="button" class="mobile-tab active" data-tab="overview"><span class="nav-icon">⌂</span>Home</button>
-  <button type="button" class="mobile-tab" data-tab="issues"><span class="nav-icon">◎</span>Issues</button>
+  <button type="button" class="mobile-tab" data-tab="money"><span class="nav-icon">$</span>Money</button>
   <button type="button" class="mobile-tab" data-tab="matcher"><span class="nav-icon">✓</span>My Match</button>
   <button type="button" class="mobile-tab" data-tab="compare"><span class="nav-icon">⇄</span>Compare</button>
   <button type="button" class="mobile-tab" data-tab="more"><span class="nav-icon">•••</span>More</button>
@@ -534,6 +518,98 @@ button,select,input{font:inherit}
   {date:'2025',name:'GOP tax and spending reconciliation law',issue:'economy',label:'Taxes / Medicaid / spending',peltola:'Opposed',sullivan:'YES',why:'A major current dividing line: Sullivan backed the Republican package; Peltola campaigns against its health-care and safety-net effects.'},
   {date:'2025',name:'Alaska resource provisions in reconciliation',issue:'energy',label:'ANWR / NPR-A / resource access',peltola:'Supports development but opposed overall package',sullivan:'YES',why:'Shows the difference between supporting Alaska development in principle and accepting the broader Republican fiscal package used to enact it.'}
  ];
+ const legislativeCandidates={
+  senate:{
+   A:['Bert K. Stedman — Republican · incumbent'],
+   C:['Carrie L. Harris — Republican','Heath Smith — Republican','Louise B. Stutes — Republican'],
+   E:['Cathy Giessel — Republican · incumbent','Leo B. Schafer — Republican','Gretchen W. Stoddard — Republican','Jason “Jace” White — Republican'],
+   G:['Nicholas Danger — Nonpartisan','Elvi Gray-Jackson — Democrat · incumbent'],
+   I:['Löki Gale Tobin — Democrat · incumbent'],
+   K:['Bill Wielechowski — Democrat · incumbent'],
+   M:['Ryan Berry — Republican','Patricia R. Chesbro — Democrat','Cathy L. Tilton — Republican · incumbent','Zane Vrvilo — Republican'],
+   O:['Peter Bauer — Democrat','George Rauscher — Republican · incumbent','Ryan W. Sheldon — Republican'],
+   Q:['William Hunt — Democrat','Frank Tomaszewski — Republican'],
+   S:['Bryce Edgmon — Undeclared','Darren Morgan Deacon — Republican','Wassilie P. “WG” Guy — Democrat','Richard “Rick” Robb — Nonpartisan']
+  },
+  house:{
+   '1':['Jeremy T. Bynum — Republican · incumbent','Grant EchoHawk — Nonpartisan'],
+   '2':['Alston C. Evans — Undeclared','Rebecca Himschoot — Nonpartisan · incumbent','Kenny “Kenny Karl” Skaflestad — Republican'],
+   '3':['Annette Kreitzer — Republican','Andrea “Andi” Story — Democrat · incumbent'],
+   '4':['Sara Hannan — Democrat · incumbent'],
+   '5':['Sheldon R.J. Prout — Republican','Kathy C. Simpler — Nonpartisan'],
+   '6':['Brent Johnson — Nonpartisan','Sarah L. Vance — Republican · incumbent'],
+   '7':['Justin M. Ruffridge — Republican · incumbent','Kate Veh — Democrat'],
+   '8':['William H. “Bill” Elam — Republican · incumbent','Frank Quinn — Nonpartisan','Nissa Savage — Nonpartisan'],
+   '9':['John C. Boyle — Republican','Ky Holland — Nonpartisan · incumbent'],
+   '10':['Charles M. “Chuck” Kopp — Republican · incumbent'],
+   '11':['Julie Coulombe — Republican · incumbent','Danni M. Hall — Democrat'],
+   '12':['Jieun C. “Jini” McDonald — Republican','Calvin R. Schrage — Nonpartisan · incumbent'],
+   '13':['Lisa M. Keller — Democrat','Felix E. Rivera — Democrat'],
+   '14':['Alyse S. Galvin — Nonpartisan · incumbent','Russell O. Wyatt — Undeclared'],
+   '15':['Mia Costello — Republican · incumbent','Denny Wells — Democrat'],
+   '16':['Carolyn Hall — Democrat · incumbent','Phil Isley — Undeclared','Liz Vazquez — Republican'],
+   '17':['Daniel L. Bradley — Republican','William Z. “Zack” Fields — Democrat · incumbent','Matthew H. Salisbury — Nonpartisan'],
+   '18':['Cliff Groh — Democrat','Dan Sager — Republican'],
+   '19':['Genevieve G. Mina — Democrat · incumbent'],
+   '20':['Paul A. Bauer Jr. — Nonpartisan','Andrew T. Gray — Democrat · incumbent'],
+   '21':['Donna Mears — Democrat · incumbent','Aimeé Sims — Republican'],
+   '22':['Ted J. Eischeid — Democrat · incumbent','Jose Roel A. Tagle — Republican'],
+   '23':['Jamie Allard — Republican · incumbent','Jim Arlington — Democrat','Ruby Jones — Republican','Nick Capozzi — Republican'],
+   '24':['Sharon Jackson — Republican','Ken McCarty — Republican','Gina T. Wall — Republican'],
+   '25':['Michael Bowles — Republican','DeLena M. Johnson — Republican · incumbent','Steven L. Merritt — Nonpartisan'],
+   '26':['Donna L. Anthony — Republican','Steve J. St. Clair — Republican · incumbent','Jeanne Troshynski — Democrat'],
+   '27':['David Eastman — Republican','Jubilee L. Underwood — Republican · incumbent'],
+   '28':['Evan M. Bordenkircher — Republican','Kathleen M. “Kit” Kennedy — Democrat','Elexie B. Moore — Republican · incumbent','Stephen Wright — Republican'],
+   '29':['Steve Menard — Republican','Gerald “Garret” Nelson — Republican · incumbent','Kimberly Slone — Democrat','Jessica I. Kusner-Kalarchik — Nonpartisan'],
+   '30':['Kevin J. McCabe — Republican · incumbent','Sandra D. Loomis — Democrat','Doug Massie — Republican','Doyle E. Holmes — Republican'],
+   '31':['Maxine L. Dibert — Democrat · incumbent','Aimée Moore — Republican','Jonathan Powell-Mark — Libertarian'],
+   '32':['Will Stapp — Republican · incumbent'],
+   '33':['Barbara Haney — Republican','Pepper McFarland — Undeclared','Glenn M. “Mike” Prax — Republican · incumbent'],
+   '34':['Joy E. “Joy Beth” Cottle — Nonpartisan','Harmony Tomaszewski — Republican'],
+   '35':['Ashley E. Carrick — Democrat · incumbent','Jeffrey L. “Jeff” Rentzel — Republican','Bridger Terra — Nonpartisan'],
+   '36':['Crystal Jones — Nonpartisan','Rebecca A. Schwanke — Republican · incumbent'],
+   '37':['Brenda L. Wilson — Republican','Mark Smith — Nonpartisan','Evelynn M. Trefon — Democrat','Dennis Robinson — Democrat'],
+   '38':['Joseph R. Amik — Nonpartisan','Nellie “Unangiq” Jimmie — Democrat · incumbent','Willy Keppel — Republican','CJ McCormick — Democrat'],
+   '39':['Neal W. “Quannaq” Foster — Democrat · incumbent','Tyler Ivanoff — Nonpartisan','Reynold D. “Papa Joe” Okitkun — Nonpartisan'],
+   '40':['Saima Chase — Democrat','Robyn Niayuq Burke — Democrat · incumbent']
+  }
+ };
+ const raceCatalog={
+  senate:{title:'U.S. Senate · 2026',subtitle:'Statewide race',cards:[['General election','Full candidate comparison, issue matcher, voting record, polling and money tools.']]},
+  house:{title:'U.S. House · 2026',subtitle:'Alaska at-large congressional district · preliminary top four',candidates:['Nick Begich — Republican · incumbent · 46.12%','Bill Hill — Nonpartisan · 30.89%','Matt Schultz — Democrat · 8.04% · campaign suspended','Eric Hafner — Democrat · 3.80%'],cards:[['Primary status','Top four shown from the latest preliminary count.'],['Research','Candidate issue, money and record modules can now be built on this field.']]},
+  governor:{title:'Governor · 2026',subtitle:'Governor and lieutenant governor · preliminary top four',candidates:['Jonathan Kreiss-Tomkins / Zac Johnson — Democrat / Nonpartisan · 21.62%','Tom Begich / Julia Hnilicka — Democrat · 20.07%','Bernadette Wilson / Michael Shower — Republican · 10.44%','Dave Bronson / Josh Church — Republican · 8.40%'],cards:[['Primary status','Top four tickets shown from the latest preliminary count.'],['Research','Policy, executive record, money and endorsement modules can now be built on this field.']]},
+  'state-senate':{title:'Alaska State Senate · 2026',subtitle:'10 Senate districts are on the ballot',districts:Object.keys(legislativeCandidates.senate),cards:[['District race','Choose one of the 10 Senate districts up in 2026.'],['Primary status','District S was narrowed to four; races with four or fewer candidates advance automatically.']]},
+  'state-house':{title:'Alaska State House · 2026',subtitle:'All 40 House districts are on the ballot',districts:Object.keys(legislativeCandidates.house),cards:[['District race','Choose any House district to view its 2026 field.'],['Primary status','Districts 23, 29, 30 and 37 were narrowed to four; other fields shown had four or fewer certified candidates.']]},
+  ballot:{title:'Alaska Ballot Measures · 2026',subtitle:'Statewide ballot initiatives and constitutional questions',candidates:['Ballot Measure 1 — Restore campaign contribution limits','Ballot Measure 2 — Restore partisan primaries and end ranked-choice general elections','Ballot Measure 3 — Require U.S. citizenship as a voter qualification'],cards:[['Ballot Measure 1 · Campaign contribution limits','Would restore limits on contributions to candidates and political groups in Alaska. The app will show the ballot language, what a YES or NO vote does, arguments from supporters and opponents, major campaign funders and election results.'],['Ballot Measure 2 · Election system','Would replace Alaska’s open top-four primary and ranked-choice general election system with partisan primaries and conventional general elections. The guide will explain how voting would change, the YES/NO consequences, supporters, opponents and campaign funding.'],['Ballot Measure 3 · Voter qualification','Would add an explicit U.S.-citizenship voting qualification to Alaska’s Constitution. The guide will show the exact proposal, practical effect, YES/NO consequences and arguments on both sides.'],['Ballot initiative research','Ballot measures are treated as full races in Alaska Votes—not as an appendix. Each measure gets a neutral issue guide, campaign-money view, endorsements/supporters and opponents, source links and results tracking.']]}
+ };
+ const raceSelect=document.getElementById('raceSelect'),racePlaceholder=document.getElementById('racePlaceholder'),placeholderTitle=document.getElementById('placeholderTitle'),placeholderSubtitle=document.getElementById('placeholderSubtitle'),raceCards=document.getElementById('raceCards'),districtPicker=document.getElementById('districtPicker'),districtSelect=document.getElementById('districtSelect'),selectedRaceDetail=document.getElementById('selectedRaceDetail');
+ function renderDistrictDetail(){
+  const kind=raceSelect.value==='state-senate'?'Senate':'House';
+  const d=districtSelect.value;
+  const list=legislativeCandidates[raceSelect.value==='state-senate'?'senate':'house'][d]||[];
+  selectedRaceDetail.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>Alaska ${kind} District ${d}</strong><span class="viz-badge">${list.length} candidate${list.length===1?'':'s'}</span></div><div class="space-y-2">${list.map((name,i)=>`<div class="candidate-row py-2"><div class="font-medium text-sm">${i+1}. ${name}</div></div>`).join('')}</div><p class="text-sm text-[var(--viz-muted)]">General-election field based on certified primary candidates and the latest preliminary top-four results where the primary eliminated candidates. Results remain unofficial until Alaska certifies the primary.</p></div>`;
+ }
+ function switchRace(id){
+  const meta=raceCatalog[id]||raceCatalog.senate;
+  const senate=id==='senate';
+  document.querySelectorAll('#ak-general > section, #ak-general > nav.desktop-tabs, #ak-general > nav.mobile-nav, #ak-general > p').forEach(el=>{
+   if(el.id==='racePlaceholder')return;
+   el.classList.toggle('hidden',!senate);
+  });
+  if(senate){racePlaceholder.classList.add('hidden');openTab('overview');}
+  else{
+   racePlaceholder.classList.remove('hidden');
+   placeholderTitle.textContent=meta.title;
+   placeholderSubtitle.textContent=meta.subtitle;
+   raceCards.innerHTML=meta.cards.map(c=>`<div class="viz-node"><div class="font-medium">${c[0]}</div><div class="text-sm text-[var(--viz-muted)] mt-1">${c[1]}</div></div>`).join('');
+   selectedRaceDetail.innerHTML=meta.candidates?`<div class="card space-y-3"><div class="font-medium">Current field</div>${meta.candidates.map((name,i)=>`<div class="candidate-row py-2"><div class="text-sm"><strong>${i+1}.</strong> ${name}</div></div>`).join('')}<p class="text-sm text-[var(--viz-muted)]">Primary results are preliminary and can change as remaining ballots are counted and before the Aug. 31 withdrawal deadline.</p></div>`:'';
+   if(meta.districts){districtPicker.classList.remove('hidden');districtSelect.innerHTML=meta.districts.map(d=>`<option value="${d}">${id==='state-senate'?'Senate District ':'House District '}${d}</option>`).join('');renderDistrictDetail();}
+   else{districtPicker.classList.add('hidden');}
+   window.scrollTo({top:0,behavior:'smooth'});
+  }
+ }
+ raceSelect.addEventListener('change',()=>switchRace(raceSelect.value));
+ districtSelect.addEventListener('change',renderDistrictDetail);
  const tabs=document.querySelectorAll('.tab'),mobileTabs=document.querySelectorAll('.mobile-tab'),panels=document.querySelectorAll('.panel');
  function openTab(id){
   tabs.forEach(x=>x.classList.toggle('active',x.dataset.tab===id));

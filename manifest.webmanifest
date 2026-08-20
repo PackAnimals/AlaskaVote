@@ -1,7 +1,7 @@
 {
   "name": "Alaska Votes",
   "short_name": "AK Votes",
-  "description": "Nonpartisan Alaska election research and candidate comparison.",
+  "description": "Alaska election research, candidate comparisons, voting records, money trails and ballot measures.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
