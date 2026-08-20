@@ -211,17 +211,17 @@ button,select,input{font:inherit}
 
 <section id="overview" class="panel space-y-4">
   <div>
-    <h2 class="text-lg font-medium">Political spectrum</h2>
-    <p class="text-sm text-[var(--viz-muted)]">Approximate placement based on published policy positions rather than party label alone.</p>
+    <h2 class="text-lg font-medium" id="spectrumTitle">Political spectrum</h2>
+    <p class="text-sm text-[var(--viz-muted)]" id="spectrumSubtitle">Approximate placement based on published policy positions rather than party label alone.</p>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+  <div id="spectrumCards" class="grid grid-cols-1 sm:grid-cols-4 gap-3">
     <div class="viz-node"><div class="font-medium">David Leslie</div><div class="text-sm">Progressive</div><div class="text-sm text-[var(--viz-muted)]">Universal health care · abortion rights · climate regulation · anti-war</div></div>
     <div class="viz-node"><div class="font-medium">Mary Peltola</div><div class="text-sm">Center-left / Alaska moderate</div><div class="text-sm text-[var(--viz-muted)]">Pro-resource · pro-gun · abortion rights · labor-friendly</div></div>
     <div class="viz-node"><div class="font-medium">Daniel J. Sullivan Jr.</div><div class="text-sm">Populist / traditional Republican</div><div class="text-sm text-[var(--viz-muted)]">Working families · accountability · Alaska-first</div></div>
     <div class="viz-node"><div class="font-medium">Dan S. Sullivan</div><div class="text-sm">Conservative Republican</div><div class="text-sm text-[var(--viz-muted)]">Oil & gas · tax cuts · strong military · Trump ally</div></div>
   </div>
 
-  <div class="card space-y-1">
+  <div class="card space-y-1" id="spectrumNote">
     <h3 class="font-medium">What makes this race unusual?</h3>
     <p class="text-sm">Peltola is significantly more supportive of oil development, gun ownership and border security than a typical national Democratic candidate. Incumbent Sullivan combines conventional Republican economics with a willingness to support some bipartisan Alaska-focused measures, including the 2021 infrastructure law. The two lesser-known finalists sit on opposite sides of the major contenders: Leslie to Peltola's left and Daniel Sullivan Jr. as an anti-establishment alternative on the right.</p>
   </div>
@@ -601,6 +601,21 @@ button,select,input{font:inherit}
  };
  const raceSelect=document.getElementById('raceSelect'),raceLanding=document.getElementById('raceLanding'),racePlaceholder=document.getElementById('racePlaceholder'),placeholderTitle=document.getElementById('placeholderTitle'),placeholderSubtitle=document.getElementById('placeholderSubtitle'),raceCards=document.getElementById('raceCards'),districtPicker=document.getElementById('districtPicker'),districtSelect=document.getElementById('districtSelect'),selectedRaceDetail=document.getElementById('selectedRaceDetail');
  const primarySummary=document.getElementById('primarySummary'),primarySummaryTitle=document.getElementById('primarySummaryTitle'),primarySummarySubtitle=document.getElementById('primarySummarySubtitle'),primarySummaryBar=document.getElementById('primarySummaryBar'),primarySummaryCards=document.getElementById('primarySummaryCards'),primarySummaryNote=document.getElementById('primarySummaryNote');
+ const spectrumTitle=document.getElementById('spectrumTitle'),spectrumSubtitle=document.getElementById('spectrumSubtitle'),spectrumCards=document.getElementById('spectrumCards'),spectrumNote=document.getElementById('spectrumNote');
+ function renderSpectrum(){
+  const id=raceSelect.value||'senate',list=currentCandidates();
+  if(id==='senate'){
+   spectrumTitle.textContent='Political spectrum';
+   spectrumSubtitle.textContent='Approximate placement based on published policy positions rather than party label alone.';
+   spectrumCards.innerHTML='<div class="viz-node"><div class="font-medium">David Leslie</div><div class="text-sm">Progressive</div><div class="text-sm text-[var(--viz-muted)]">Universal health care · abortion rights · climate regulation · anti-war</div></div><div class="viz-node"><div class="font-medium">Mary Peltola</div><div class="text-sm">Center-left / Alaska moderate</div><div class="text-sm text-[var(--viz-muted)]">Pro-resource · pro-gun · abortion rights · labor-friendly</div></div><div class="viz-node"><div class="font-medium">Daniel J. Sullivan Jr.</div><div class="text-sm">Populist / traditional Republican</div><div class="text-sm text-[var(--viz-muted)]">Working families · accountability · Alaska-first</div></div><div class="viz-node"><div class="font-medium">Dan S. Sullivan</div><div class="text-sm">Conservative Republican</div><div class="text-sm text-[var(--viz-muted)]">Oil & gas · tax cuts · strong military · Trump ally</div></div>';
+   spectrumNote.innerHTML='<h3 class="font-medium">What makes this race unusual?</h3><p class="text-sm">Peltola is significantly more supportive of oil development, gun ownership and border security than a typical national Democratic candidate. Incumbent Sullivan combines conventional Republican economics with a willingness to support some bipartisan Alaska-focused measures, including the 2021 infrastructure law. The two lesser-known finalists sit on opposite sides of the major contenders: Leslie to Peltola\'s left and Daniel Sullivan Jr. as an anti-establishment alternative on the right.</p>';
+   return;
+  }
+  spectrumTitle.textContent=id==='ballot'?'Position overview':'Candidate spectrum';
+  spectrumSubtitle.textContent=id==='ballot'?'Ballot measures do not map cleanly onto a single left-right spectrum. Each measure is shown by subject and voting choice.':'This view now follows the selected contest. Detailed ideological placement is only shown where enough sourced issue data is available.';
+  spectrumCards.innerHTML=list.map(c=>`<div class="viz-node"><div class="font-medium">${c.name}</div><div class="text-sm text-[var(--viz-muted)] mt-1">${id==='ballot'?'YES / NO contest':'Detailed issue profile to expand'}</div></div>`).join('');
+  spectrumNote.innerHTML=`<h3 class="font-medium">${id==='ballot'?'How to read this':'Neutrality note'}</h3><p class="text-sm">${id==='ballot'?'The app avoids forcing ballot initiatives onto an ideological line when the policy question is better understood directly.':'Until candidate-specific policy records are fully sourced for this contest, the app will not infer ideological positions from party labels alone.'}</p>`;
+ }
  function renderPrimarySummary(){
   const id=raceSelect.value||'senate';
   if(id==='state-senate'||id==='state-house'){
@@ -660,6 +675,7 @@ button,select,input{font:inherit}
   renderMoney();
   renderDonors();
   renderCompare();
+  renderSpectrum();
  }
  function switchRace(id){
   const meta=raceCatalog[id]||raceCatalog.senate;

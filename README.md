@@ -1,15 +1,16 @@
-# Alaska Votes v0.5
+# Alaska Votes v0.6
 
 GitHub-ready PWA test build.
 
 ## Included in this build
+- Political spectrum now follows the selected contest
 - Contest-specific candidate syncing
 - Contest-specific primary summary
-- Balanced, like-for-like Senate fundraising comparisons
+- Balanced Senate fundraising comparison
 - Money Trail scoped to selected contest
 - Donor Explorer scoped to selected contest
 - Compare menus scoped to selected contest
-- All statewide contests, legislative districts and ballot measures
+- Statewide races, legislative districts and ballot measures
 - Where Do I Stand? matcher
 - Mobile PWA shell
 
