@@ -172,28 +172,28 @@ button,select,input{font:inherit}
   <div class="viz-callout"><strong>All-race navigation is live.</strong> Statewide contests, legislative districts and ballot measures now use the same selectable race framework so each contest can carry candidate profiles, issue positions, records, money and comparisons.</div>
 </section>
 
-<section class="space-y-3 hidden">
+<section id="primarySummary" class="space-y-3 hidden">
   <div class="flex flex-wrap items-start justify-between gap-3">
     <div>
-      <h2 class="text-xl font-medium">The race after the primary</h2>
-      <p class="text-sm text-[var(--viz-muted)]">Latest Alaska Division of Elections unofficial results · 396 of 403 precincts reporting</p>
+      <h2 class="text-xl font-medium" id="primarySummaryTitle">The race after the primary</h2>
+      <p class="text-sm text-[var(--viz-muted)]" id="primarySummarySubtitle">Latest Alaska Division of Elections unofficial results · 396 of 403 precincts reporting</p>
     </div>
     <span class="viz-badge">Nov. 3, 2026</span>
   </div>
 
-  <div class="racebar" role="img" aria-label="Primary vote: Peltola 48.09%, Dan S. Sullivan 42.74%, Daniel J. Sullivan Jr. 2.44%, David Leslie 1.13%, others 5.6%">
+  <div class="racebar" id="primarySummaryBar" role="img" aria-label="Primary vote: Peltola 48.09%, Dan S. Sullivan 42.74%, Daniel J. Sullivan Jr. 2.44%, David Leslie 1.13%, others 5.6%">
     <div class="bar-p" style="width:48.09%"></div>
     <div class="bar-s" style="width:42.74%"></div>
     <div class="bar-j" style="width:2.44%"></div>
     <div class="bar-l" style="width:1.13%"></div>
   </div>
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+  <div id="primarySummaryCards" class="grid grid-cols-2 sm:grid-cols-4 gap-2">
     <div class="metric-card"><div class="text-sm">Mary Peltola</div><div class="viz-stat-value">48.09%</div><div class="text-sm text-[var(--viz-muted)]">63,810 votes · DEM</div></div>
     <div class="metric-card"><div class="text-sm">Dan S. Sullivan</div><div class="viz-stat-value">42.74%</div><div class="text-sm text-[var(--viz-muted)]">56,717 · REP incumbent</div></div>
     <div class="metric-card"><div class="text-sm">Daniel J. Sullivan Jr.</div><div class="viz-stat-value">2.44%</div><div class="text-sm text-[var(--viz-muted)]">3,232 · no party shown</div></div>
     <div class="metric-card"><div class="text-sm">David Leslie</div><div class="viz-stat-value">1.13%</div><div class="text-sm text-[var(--viz-muted)]">1,499 · DEM</div></div>
   </div>
-  <div class="viz-callout"><strong>Fourth-place watch:</strong> Leslie currently leads Republican Gerald Heikes by only 20 votes. The general-election field can still change as remaining ballots are counted.</div>
+  <div class="viz-callout" id="primarySummaryNote"><strong>Fourth-place watch:</strong> Leslie currently leads Republican Gerald Heikes by only 20 votes. The general-election field can still change as remaining ballots are counted.</div>
 </section>
 
 <nav class="desktop-tabs flex-wrap gap-2" aria-label="App sections">
@@ -287,10 +287,6 @@ button,select,input{font:inherit}
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
     <label class="text-sm">Candidate
       <select id="donorCandidate" class="mt-1 w-full rounded-xl border px-3 py-2 bg-[var(--viz-panel)] text-[var(--viz-text)]">
-        <option value="peltola">Mary Peltola</option>
-        <option value="sullivan">Dan S. Sullivan</option>
-        <option value="danj">Daniel J. Sullivan Jr.</option>
-        <option value="leslie">David Leslie</option>
       </select>
     </label>
     <label class="text-sm">View
@@ -301,33 +297,7 @@ button,select,input{font:inherit}
     </label>
   </div>
   <div id="donorExplorer"></div>
-
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="card space-y-3">
-      <div class="flex items-center justify-between gap-3"><strong>Mary Peltola fundraising mix</strong><span class="viz-badge">Through June 30</span></div>
-      <div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$13.60M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:96%"></div></div></div>
-      <div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$0.56M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:4%"></div></div></div>
-      <div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$1.38M</strong></div></div>
-      <div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$6.09M</strong></div></div>
-      <div class="text-sm"><strong>Geography:</strong> about 13% of itemized individual fundraising in the Q1 snapshot came from Alaska; most dollars came from outside the state.</div>
-      <div class="text-sm"><strong>Named network examples:</strong> ActBlue small-dollar donors · Democratic Senate campaign infrastructure · EMILY's List-linked donors.</div>
-    </div>
-    <div class="card space-y-3">
-      <div class="flex items-center justify-between gap-3"><strong>Dan S. Sullivan fundraising mix</strong><span class="viz-badge">Through June 30</span></div>
-      <div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$3.70M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:67%"></div></div></div>
-      <div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$1.81M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:33%"></div></div></div>
-      <div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$2.69M</strong></div></div>
-      <div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$8.30M</strong></div></div>
-      <div class="text-sm"><strong>Geography:</strong> about 17% of individual contribution dollars in the Q1 snapshot came from Alaska.</div>
-      <div class="text-sm"><strong>Named network examples:</strong> resource/business PACs · defense/government-contractor interests · Republican committees · roughly $250K in Q1 individual contributions reported through AIPAC as a conduit.</div>
-    </div>
-  </div>
-
-  <div class="card space-y-3">
-    <div class="flex items-center justify-between gap-3"><strong>Outside spending</strong><span class="viz-badge">Independent expenditures</span></div>
-    <p class="text-sm">Outside groups can spend independently for or against candidates but cannot legally coordinate that spending with campaigns. A major Republican Senate super PAC announced an additional <strong>$2 million</strong> supporting Dan S. Sullivan in August.</p>
-    <p class="text-sm text-[var(--viz-muted)]">This is separate from money donated directly to Sullivan's campaign and should be evaluated separately from candidate-controlled funds.</p>
-  </div>
+  <div id="donorRaceDetail" class="space-y-4"></div>
 </section>
 
 <section id="tracker" class="panel hidden space-y-4">
@@ -432,32 +402,7 @@ button,select,input{font:inherit}
     <h2 class="text-xl font-medium">Follow the Money</h2>
     <p class="text-sm text-[var(--viz-muted)]">Track how much each campaign raises, who gives it, where the money comes from and which outside groups are spending in the race. Funding alignment is context, not proof that a donation caused a position.</p>
   </div>
-  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Peltola receipts</div><div class="viz-stat-value">$15.58M</div><div class="text-sm">2025–26 cycle snapshot</div></div>
-    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Sullivan receipts</div><div class="viz-stat-value">$8.50M</div><div class="text-sm">2025–26 cycle snapshot</div></div>
-    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Peltola individuals</div><div class="viz-stat-value">$13.60M</div><div class="text-sm">Dominant funding source</div></div>
-    <div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">Sullivan PACs</div><div class="viz-stat-value">$1.81M</div><div class="text-sm">Direct committee/PAC support</div></div>
-  </div>
-  <button type="button" class="more-link w-full" data-open-tab="donors"><strong>Open Donor Explorer →</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Drill into donor types, named networks and donor-policy alignment.</div></button>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <div class="card space-y-3">
-      <div class="flex justify-between"><strong>Mary Peltola</strong><span class="viz-badge">Individual-heavy</span></div>
-      <p class="text-sm">Her fundraising base is dominated by individual donors, including a very large national small-dollar Democratic network. Democratic leadership organizations and abortion-rights networks also support her.</p>
-      <div><div class="flex justify-between text-sm"><span>Individual-donor dependence</span><span>Very high</span></div><div class="score-track"><div class="score-fill" style="width:96%"></div></div></div>
-      <div class="text-sm"><strong>Notable sources:</strong> small-dollar online donors · Alaska individual donors · Democratic political network · EMILY's List-linked donors.</div>
-    </div>
-    <div class="card space-y-3">
-      <div class="flex justify-between"><strong>Dan S. Sullivan</strong><span class="viz-badge">PAC-heavy mix</span></div>
-      <p class="text-sm">Sullivan has a more traditional incumbent fundraising network with individuals plus substantially more direct PAC, industry, trade-association and political-committee money.</p>
-      <div><div class="flex justify-between text-sm"><span>PAC / institutional role</span><span>Substantial</span></div><div class="score-track"><div class="score-fill" style="width:65%"></div></div></div>
-      <div class="text-sm"><strong>Notable networks:</strong> resource/business interests · defense/government contractor interests · Republican committees · AIPAC-linked individual fundraising.</div>
-    </div>
-  </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-    <div class="viz-node"><strong>Daniel J. Sullivan Jr.</strong><p class="text-sm mt-1">Far smaller fundraising operation. His campaign is built primarily around anti-establishment messaging rather than a major national donor network.</p></div>
-    <div class="viz-node"><strong>David Leslie</strong><p class="text-sm mt-1">Far smaller fundraising operation than either major candidate; no comparable national fundraising infrastructure.</p></div>
-  </div>
-  <div class="viz-callout">Both major campaigns rely heavily on money from outside Alaska. Peltola nevertheless raised substantially more individual dollars from Alaska than Sullivan in the reporting period previously examined.</div>
+  <div id="moneyContent"></div>
 </section>
 
 <section id="compare" class="panel hidden space-y-4">
@@ -636,22 +581,94 @@ button,select,input{font:inherit}
   'state-house':{title:'Alaska State House · 2026',subtitle:'All 40 House districts are on the ballot',districts:Object.keys(legislativeCandidates.house),cards:[['District race','Choose any House district to view its 2026 field.'],['Primary status','Districts 23, 29, 30 and 37 were narrowed to four; other fields shown had four or fewer certified candidates.']]},
   ballot:{title:'Alaska Ballot Measures · 2026',subtitle:'Statewide ballot initiatives and constitutional questions',candidates:['Ballot Measure 1 — Restore campaign contribution limits','Ballot Measure 2 — Restore partisan primaries and end ranked-choice general elections','Ballot Measure 3 — Require U.S. citizenship as a voter qualification'],cards:[['Ballot Measure 1 · Campaign contribution limits','Would restore limits on contributions to candidates and political groups in Alaska. The app will show the ballot language, what a YES or NO vote does, arguments from supporters and opponents, major campaign funders and election results.'],['Ballot Measure 2 · Election system','Would replace Alaska’s open top-four primary and ranked-choice general election system with partisan primaries and conventional general elections. The guide will explain how voting would change, the YES/NO consequences, supporters, opponents and campaign funding.'],['Ballot Measure 3 · Voter qualification','Would add an explicit U.S.-citizenship voting qualification to Alaska’s Constitution. The guide will show the exact proposal, practical effect, YES/NO consequences and arguments on both sides.'],['Ballot initiative research','Ballot measures are treated as full races in Alaska Votes—not as an appendix. Each measure gets a neutral issue guide, campaign-money view, endorsements/supporters and opponents, source links and results tracking.']]}
  };
+ const primarySnapshots={
+  senate:{title:'The Senate race after the primary',subtitle:'Latest Alaska Division of Elections unofficial results · 396 of 403 precincts reporting',items:[['Mary Peltola','48.09%','63,810 votes · DEM'],['Dan S. Sullivan','42.74%','56,717 · REP incumbent'],['Daniel J. Sullivan Jr.','2.44%','3,232 · no party shown'],['David Leslie','1.13%','1,499 · DEM']],widths:[48.09,42.74,2.44,1.13],note:'<strong>Fourth-place watch:</strong> Leslie currently leads Republican Gerald Heikes by only 20 votes. The general-election field can still change as remaining ballots are counted.'},
+  house:{title:'The U.S. House race after the primary',subtitle:'Alaska at-large · preliminary top-four snapshot',items:[['Nick Begich','46.12%','Republican · incumbent'],['Bill Hill','30.89%','Nonpartisan'],['Matt Schultz','8.04%','Democrat · campaign suspended'],['Eric Hafner','3.80%','Democrat']],widths:[46.12,30.89,8.04,3.80],note:'<strong>General-election field:</strong> These are the current preliminary top four. Final placement can still change before certification and the withdrawal deadline.'},
+  governor:{title:'The Governor race after the primary',subtitle:'Governor / lieutenant governor tickets · preliminary top-four snapshot',items:[['Kreiss-Tomkins / Johnson','21.62%','Democrat / Nonpartisan'],['Begich / Hnilicka','20.07%','Democrat'],['Wilson / Shower','10.44%','Republican'],['Bronson / Church','8.40%','Republican']],widths:[21.62,20.07,10.44,8.40],note:'<strong>Top-four snapshot:</strong> The governor race remains preliminary until the primary is certified.'},
+  ballot:{title:'Ballot measures on the November ballot',subtitle:'Statewide contests · 3 measures tracked',items:[['Measure 1','Campaign limits','YES / NO'],['Measure 2','Election system','YES / NO'],['Measure 3','Voter qualification','YES / NO']],widths:[33.33,33.33,33.34],note:'<strong>Ballot measures:</strong> This section shows the contests themselves rather than primary vote totals because initiatives do not advance through the candidate primary.'}
+ };
+ const contestCandidates={
+  senate:[{id:'peltola',name:'Mary Peltola'},{id:'sullivan',name:'Dan S. Sullivan'},{id:'danj',name:'Daniel J. Sullivan Jr.'},{id:'leslie',name:'David Leslie'}],
+  house:[{id:'begich',name:'Nick Begich'},{id:'hill',name:'Bill Hill'},{id:'schultz',name:'Matt Schultz'},{id:'hafner',name:'Eric Hafner'}],
+  governor:[{id:'jkt',name:'Jonathan Kreiss-Tomkins / Zac Johnson'},{id:'tbegich',name:'Tom Begich / Julia Hnilicka'},{id:'wilson',name:'Bernadette Wilson / Michael Shower'},{id:'bronson',name:'Dave Bronson / Josh Church'}],
+  ballot:[{id:'bm1',name:'Ballot Measure 1'},{id:'bm2',name:'Ballot Measure 2'},{id:'bm3',name:'Ballot Measure 3'}]
+ };
+ const moneySnapshots={
+  senate:{title:'U.S. Senate Money Trail',note:'Detailed FEC snapshot loaded for the Senate race. The same fundraising categories are shown for both leading campaigns so the comparison is like-for-like.',cards:[['Mary Peltola receipts','$15.58M','Total receipts snapshot'],['Dan S. Sullivan receipts','$8.50M','Total receipts snapshot'],['Peltola individuals','$13.60M','Individual contributions'],['Sullivan individuals','$3.70M','Individual contributions'],['Peltola PACs','$0.56M','PACs / other committees'],['Sullivan PACs','$1.81M','PACs / other committees'],['Peltola transfers','$1.38M','Authorized committee transfers'],['Sullivan transfers','$2.69M','Authorized committee transfers'],['Peltola cash on hand','$6.09M','Cash on hand'],['Sullivan cash on hand','$8.30M','Cash on hand']]},
+  house:{title:'U.S. House Money Trail',note:'Candidate menu now follows the U.S. House field. Detailed FEC totals can be added candidate-by-candidate.',cards:[['Nick Begich','Incumbent','FEC profile to expand'],['Bill Hill','Candidate','Fundraising profile to expand'],['Matt Schultz','Candidate','Campaign suspended'],['Eric Hafner','Candidate','Fundraising profile to expand']]},
+  governor:{title:'Governor Money Trail',note:'Alaska campaign-finance reporting applies here rather than federal FEC reporting.',cards:[['Kreiss-Tomkins / Johnson','Ticket','State finance profile to expand'],['Begich / Hnilicka','Ticket','State finance profile to expand'],['Wilson / Shower','Ticket','State finance profile to expand'],['Bronson / Church','Ticket','State finance profile to expand']]},
+  ballot:{title:'Ballot Measure Money Trail',note:'Track organizations raising and spending for and against each measure.',cards:[['Ballot Measure 1','YES / NO groups','Funding profile to expand'],['Ballot Measure 2','YES / NO groups','Funding profile to expand'],['Ballot Measure 3','YES / NO groups','Funding profile to expand']]}
+ };
  const raceSelect=document.getElementById('raceSelect'),raceLanding=document.getElementById('raceLanding'),racePlaceholder=document.getElementById('racePlaceholder'),placeholderTitle=document.getElementById('placeholderTitle'),placeholderSubtitle=document.getElementById('placeholderSubtitle'),raceCards=document.getElementById('raceCards'),districtPicker=document.getElementById('districtPicker'),districtSelect=document.getElementById('districtSelect'),selectedRaceDetail=document.getElementById('selectedRaceDetail');
+ const primarySummary=document.getElementById('primarySummary'),primarySummaryTitle=document.getElementById('primarySummaryTitle'),primarySummarySubtitle=document.getElementById('primarySummarySubtitle'),primarySummaryBar=document.getElementById('primarySummaryBar'),primarySummaryCards=document.getElementById('primarySummaryCards'),primarySummaryNote=document.getElementById('primarySummaryNote');
+ function renderPrimarySummary(){
+  const id=raceSelect.value||'senate';
+  if(id==='state-senate'||id==='state-house'){
+   const kind=id==='state-senate'?'Senate':'House',d=districtSelect.value,list=currentCandidates();
+   primarySummaryTitle.textContent=`Alaska ${kind} District ${d} after the primary`;
+   primarySummarySubtitle.textContent='Current general-election field · primary status remains unofficial until certification';
+   primarySummaryBar.innerHTML='';
+   primarySummaryBar.setAttribute('aria-label',`${kind} District ${d} candidate field`);
+   primarySummaryCards.innerHTML=list.map(c=>`<div class="metric-card"><div class="text-sm">${c.name}</div><div class="text-sm text-[var(--viz-muted)] mt-1">${c.full||'Candidate'}</div></div>`).join('');
+   primarySummaryNote.innerHTML='<strong>District snapshot:</strong> This view follows the selected legislative district. Detailed district vote shares can be added as certified results are loaded.';
+   return;
+  }
+  const snap=primarySnapshots[id]||primarySnapshots.senate;
+  primarySummaryTitle.textContent=snap.title;
+  primarySummarySubtitle.textContent=snap.subtitle;
+  primarySummaryBar.innerHTML=snap.widths.map((w,i)=>`<div class="${['bar-p','bar-s','bar-j','bar-l'][i%4]}" style="width:${w}%"></div>`).join('');
+  primarySummaryBar.setAttribute('aria-label',snap.items.map(x=>`${x[0]} ${x[1]}`).join(', '));
+  primarySummaryCards.innerHTML=snap.items.map(x=>`<div class="metric-card"><div class="text-sm">${x[0]}</div><div class="viz-stat-value">${x[1]}</div><div class="text-sm text-[var(--viz-muted)]">${x[2]}</div></div>`).join('');
+  primarySummaryNote.innerHTML=snap.note;
+ }
  function renderDistrictDetail(){
   const kind=raceSelect.value==='state-senate'?'Senate':'House';
   const d=districtSelect.value;
   const list=legislativeCandidates[raceSelect.value==='state-senate'?'senate':'house'][d]||[];
   selectedRaceDetail.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>Alaska ${kind} District ${d}</strong><span class="viz-badge">${list.length} candidate${list.length===1?'':'s'}</span></div><div class="space-y-2">${list.map((name,i)=>`<div class="candidate-row py-2"><div class="font-medium text-sm">${i+1}. ${name}</div></div>`).join('')}</div><p class="text-sm text-[var(--viz-muted)]">General-election field based on certified primary candidates and the latest preliminary top-four results where the primary eliminated candidates. Results remain unofficial until Alaska certifies the primary.</p></div>`;
+  syncContestTools();
+  renderPrimarySummary();
+ }
+ function currentCandidates(){
+  const id=raceSelect.value||'senate';
+  if(id==='state-senate'||id==='state-house'){
+   const d=districtSelect.value;
+   const list=legislativeCandidates[id==='state-senate'?'senate':'house'][d]||[];
+   return list.map((name,i)=>({id:`district-${i}`,name:name.split(' — ')[0],full:name}));
+  }
+  return contestCandidates[id]||contestCandidates.senate;
+ }
+ function renderMoney(){
+  const id=raceSelect.value||'senate';
+  const box=document.getElementById('moneyContent');
+  if(id==='state-senate'||id==='state-house'){
+   const kind=id==='state-senate'?'Senate':'House',d=districtSelect.value,list=currentCandidates();
+   box.innerHTML=`<div class="space-y-4"><div class="viz-callout"><strong>Alaska ${kind} District ${d} Money Trail</strong><br><span class="text-sm">Candidate-specific Alaska Public Offices Commission fundraising data can be loaded for this district.</span></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-3">${list.map(c=>`<div class="metric-card"><div class="font-medium">${c.name}</div><div class="text-sm text-[var(--viz-muted)] mt-1">Campaign-finance profile to expand</div></div>`).join('')}</div></div>`;
+   return;
+  }
+  const snap=moneySnapshots[id]||moneySnapshots.senate;
+  box.innerHTML=`<div class="space-y-4"><div class="viz-callout"><strong>${snap.title}</strong><br><span class="text-sm">${snap.note}</span></div><div class="grid grid-cols-2 sm:grid-cols-4 gap-2">${snap.cards.map(c=>`<div class="metric-card"><div class="text-sm text-[var(--viz-muted)]">${c[0]}</div><div class="viz-stat-value">${c[1]}</div><div class="text-sm">${c[2]}</div></div>`).join('')}</div><button type="button" class="more-link w-full" data-open-tab="donors"><strong>Open Donor Explorer →</strong><div class="text-sm text-[var(--viz-muted)] mt-1">Candidate choices now follow the selected contest.</div></button></div>`;
+  const btn=box.querySelector('[data-open-tab]');if(btn)btn.addEventListener('click',()=>openTab(btn.dataset.openTab));
+ }
+ function syncContestTools(){
+  const list=currentCandidates();
+  const options=list.map(c=>`<option value="${c.id}">${c.name}</option>`).join('');
+  donorCandidate.innerHTML=options;
+  a.innerHTML=options;b.innerHTML=options;
+  recordCandidate.innerHTML='<option value="both">Compare available records</option>'+options;
+  if(a.options.length)a.selectedIndex=0;if(b.options.length)b.selectedIndex=Math.min(1,b.options.length-1);
+  renderMoney();
+  renderDonors();
+  renderCompare();
  }
  function switchRace(id){
   const meta=raceCatalog[id]||raceCatalog.senate;
-  const senate=id==='senate';
   raceLanding.classList.add('hidden');
   document.querySelectorAll('#ak-general > section, #ak-general > nav.desktop-tabs, #ak-general > nav.mobile-nav, #ak-general > p').forEach(el=>{
    if(el.id==='racePlaceholder'||el.id==='raceLanding')return;
-   el.classList.toggle('hidden',!senate);
+   el.classList.remove('hidden');
   });
-  if(senate){racePlaceholder.classList.add('hidden');openTab('overview');}
+  if(id==='senate'){racePlaceholder.classList.add('hidden');openTab('overview');syncContestTools();}
   else{
    racePlaceholder.classList.remove('hidden');
    placeholderTitle.textContent=meta.title;
@@ -659,7 +676,8 @@ button,select,input{font:inherit}
    raceCards.innerHTML=meta.cards.map(c=>`<div class="viz-node"><div class="font-medium">${c[0]}</div><div class="text-sm text-[var(--viz-muted)] mt-1">${c[1]}</div></div>`).join('');
    selectedRaceDetail.innerHTML=meta.candidates?`<div class="card space-y-3"><div class="font-medium">Current field</div>${meta.candidates.map((name,i)=>`<div class="candidate-row py-2"><div class="text-sm"><strong>${i+1}.</strong> ${name}</div></div>`).join('')}<p class="text-sm text-[var(--viz-muted)]">Primary results are preliminary and can change as remaining ballots are counted and before the Aug. 31 withdrawal deadline.</p></div>`:'';
    if(meta.districts){districtPicker.classList.remove('hidden');districtSelect.innerHTML=meta.districts.map(d=>`<option value="${d}">${id==='state-senate'?'Senate District ':'House District '}${d}</option>`).join('');renderDistrictDetail();}
-   else{districtPicker.classList.add('hidden');}
+   else{districtPicker.classList.add('hidden');syncContestTools();}
+   renderPrimarySummary();
    window.scrollTo({top:0,behavior:'smooth'});
   }
  }
@@ -699,7 +717,7 @@ button,select,input{font:inherit}
  function renderIssues(){cards.innerHTML=Object.values(data).map(c=>`<article class="viz-node"><div class="flex justify-between gap-2"><strong>${c.name}</strong><span class="text-sm text-[var(--viz-muted)]">${c.party}</span></div><p class="stance text-sm mt-3">${c.issues[issue.value]}</p></article>`).join('')}
  issue.addEventListener('change',renderIssues);renderIssues();
  const donorCandidate=document.getElementById('donorCandidate'),donorView=document.getElementById('donorView'),donorExplorer=document.getElementById('donorExplorer');
- function renderDonors(){const c=data[donorCandidate.value],items=donorData[donorCandidate.value][donorView.value];donorExplorer.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>${c.name}</strong><span class="viz-badge">${donorView.value==='sources'?'Funding profile':'Donor-policy context'}</span></div>${items.map(x=>`<div class="candidate-row py-3"><div class="font-medium text-sm">${x[0]}</div><div class="text-sm mt-1">${x[1]}</div></div>`).join('')}</div>`}
+ function renderDonors(){const id=raceSelect.value||'senate',selected=currentCandidates().find(c=>c.id===donorCandidate.value)||currentCandidates()[0],detail=document.getElementById('donorRaceDetail');if(id==='senate'&&selected&&donorData[selected.id]){const c=data[selected.id],items=donorData[selected.id][donorView.value];donorExplorer.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>${c.name}</strong><span class="viz-badge">${donorView.value==='sources'?'Funding profile':'Donor-policy context'}</span></div>${items.map(x=>`<div class="candidate-row py-3"><div class="font-medium text-sm">${x[0]}</div><div class="text-sm mt-1">${x[1]}</div></div>`).join('')}</div>`;detail.innerHTML=`<div class="viz-callout"><strong>Like-for-like comparison</strong><br><span class="text-sm">Both leading Senate campaigns are shown using the same categories: individuals, PACs / other committees, authorized committee transfers, cash on hand, donor geography and named networks.</span></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>Mary Peltola fundraising mix</strong><span class="viz-badge">Through June 30</span></div><div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$13.60M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:96%"></div></div></div><div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$0.56M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:4%"></div></div></div><div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$1.38M</strong></div></div><div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$6.09M</strong></div></div><div class="text-sm"><strong>Geography:</strong> about 13% of itemized individual fundraising in the Q1 snapshot came from Alaska; most dollars came from outside the state.</div><div class="text-sm"><strong>Named network examples:</strong> ActBlue small-dollar donors · Democratic Senate campaign infrastructure · EMILY's List-linked donors.</div></div><div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>Dan S. Sullivan fundraising mix</strong><span class="viz-badge">Through June 30</span></div><div><div class="flex justify-between text-sm"><span>Individuals</span><strong>$3.70M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:67%"></div></div></div><div><div class="flex justify-between text-sm"><span>PACs / other committees</span><strong>$1.81M</strong></div><div class="moneybar mt-1"><div class="moneyfill" style="width:33%"></div></div></div><div><div class="flex justify-between text-sm"><span>Authorized committee transfers</span><strong>$2.69M</strong></div></div><div><div class="flex justify-between text-sm"><span>Cash on hand</span><strong>$8.30M</strong></div></div><div class="text-sm"><strong>Geography:</strong> about 17% of individual contribution dollars in the Q1 snapshot came from Alaska.</div><div class="text-sm"><strong>Named network examples:</strong> resource/business PACs · defense/government-contractor interests · Republican committees · roughly $250K in Q1 individual contributions reported through AIPAC as a conduit.</div></div></div><div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>Outside spending</strong><span class="viz-badge">Independent expenditures</span></div><p class="text-sm">Outside spending is tracked separately from candidate-controlled money. Known independent expenditures will be shown for or against any candidate when verified, regardless of party.</p><p class="text-sm text-[var(--viz-muted)]">Current snapshot: a major Republican Senate super PAC announced an additional <strong>$2 million</strong> supporting Dan S. Sullivan in August. Comparable verified outside spending for other candidates will be added using the same standard.</p></div>`}else{donorExplorer.innerHTML=`<div class="card space-y-3"><div class="flex items-center justify-between gap-3"><strong>${selected?selected.name:'Selected candidate'}</strong><span class="viz-badge">${id==='ballot'?'Measure funding':'Campaign finance'}</span></div><p class="text-sm">The selector now follows the active contest. Detailed donor and expenditure data for this candidate or measure is not yet loaded in this test snapshot.</p></div>`;detail.innerHTML=''}}
  donorCandidate.addEventListener('change',renderDonors);donorView.addEventListener('change',renderDonors);renderDonors();
  const recordIssue=document.getElementById('recordIssue'),recordCandidate=document.getElementById('recordCandidate'),recordRows=document.getElementById('recordRows'),recordSummary=document.getElementById('recordSummary');
  function renderRecord(){
@@ -712,10 +730,10 @@ button,select,input{font:inherit}
  }
  recordIssue.addEventListener('change',renderRecord);recordCandidate.addEventListener('change',renderRecord);renderRecord();
  const a=document.getElementById('candA'),b=document.getElementById('candB'),comp=document.getElementById('comparison');
- Object.entries(data).forEach(([id,c])=>{[a,b].forEach(s=>{const o=document.createElement('option');o.value=id;o.textContent=c.name;s.appendChild(o)})});a.value='peltola';b.value='sullivan';
  const labels={energy:'Oil, gas & energy',fish:'Fisheries',health:'Health care',abortion:'Abortion & privacy',guns:'Guns',economy:'Taxes & economy',immigration:'Immigration',foreign:'Foreign policy',climate:'Climate',reform:'Government reform'};
- function renderCompare(){const A=data[a.value],B=data[b.value];comp.innerHTML=`<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="border-b"><th class="text-left py-2">Issue</th><th class="text-left p-2">${A.name}</th><th class="text-left p-2">${B.name}</th></tr></thead><tbody>${Object.keys(labels).map(k=>`<tr class="candidate-row"><td class="py-3 pr-3 font-medium">${labels[k]}</td><td class="p-2">${A.issues[k]}</td><td class="p-2">${B.issues[k]}</td></tr>`).join('')}</tbody></table></div>`}
+ function renderCompare(){const id=raceSelect.value||'senate',list=currentCandidates(),Aitem=list.find(c=>c.id===a.value)||list[0],Bitem=list.find(c=>c.id===b.value)||list[Math.min(1,list.length-1)];if(id==='senate'&&Aitem&&Bitem&&data[Aitem.id]&&data[Bitem.id]){const A=data[Aitem.id],B=data[Bitem.id];comp.innerHTML=`<div class="overflow-x-auto"><table class="w-full text-sm"><thead><tr class="border-b"><th class="text-left py-2">Issue</th><th class="text-left p-2">${A.name}</th><th class="text-left p-2">${B.name}</th></tr></thead><tbody>${Object.keys(labels).map(k=>`<tr class="candidate-row"><td class="py-3 pr-3 font-medium">${labels[k]}</td><td class="p-2">${A.issues[k]}</td><td class="p-2">${B.issues[k]}</td></tr>`).join('')}</tbody></table></div>`}else{comp.innerHTML=`<div class="viz-callout"><strong>${Aitem?Aitem.name:'Candidate A'} vs. ${Bitem?Bitem.name:'Candidate B'}</strong><br><span class="text-sm">The comparison menu now follows the selected contest. Detailed issue-by-issue comparison data for this contest is the next content layer to load.</span></div>`}}
  a.addEventListener('change',renderCompare);b.addEventListener('change',renderCompare);renderCompare();
+ syncContestTools();
 })();
 </script>
 </div>

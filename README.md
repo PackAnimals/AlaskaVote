@@ -1,27 +1,25 @@
-# Alaska Votes v0.3
+# Alaska Votes v0.5
 
 GitHub-ready PWA test build.
 
-## New in this build
-- Landing dashboard with contest summary cards
-- “Choose Your Contest” selector
-- U.S. Senate, U.S. House, Governor, State Senate, State House and Ballot Measures
-- All 40 State House districts and 10 State Senate districts on the 2026 ballot
-- Money Trail promoted in navigation
+## Included in this build
+- Contest-specific candidate syncing
+- Contest-specific primary summary
+- Balanced, like-for-like Senate fundraising comparisons
+- Money Trail scoped to selected contest
+- Donor Explorer scoped to selected contest
+- Compare menus scoped to selected contest
+- All statewide contests, legislative districts and ballot measures
 - Where Do I Stand? matcher
-- Congressional voting records
-- Mobile navigation
-- Installable PWA
+- Mobile PWA shell
 
 ## GitHub Pages
-1. Upload all files to the root of your repository.
-2. Keep `.github/workflows/pages.yml` exactly under the `.github` folder.
-3. Go to Settings → Pages.
-4. Choose GitHub Actions as the source.
-5. Commit/push to `main`.
+1. Replace your current repo files with this package.
+2. Keep `.github/workflows/pages.yml` under the `.github` folder.
+3. Commit to `main`.
+4. GitHub Pages should redeploy automatically.
 
-If the browser uploader refuses `.github`, create the file inside GitHub using:
-`.github/workflows/pages.yml`
+If the browser uploader refuses `.github`, create `.github/workflows/pages.yml` manually in GitHub.
 
 ## iPhone testing
 Open the Pages URL in Safari → Share → Add to Home Screen.
