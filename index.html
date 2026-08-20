@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0f766e">
-  <meta name="description" content="Alaska Votes — statewide, legislative and ballot measure research for Alaska elections.">
+  <meta name="description" content="Alaska Votes — candidate research, money trails, voting records, ballot measures and issue matching.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Alaska Votes">
@@ -57,6 +57,11 @@ button,select,input{font:inherit}
 #ak-general .mobile-nav .nav-icon{display:block;font-size:1rem;margin-bottom:3px}
 #ak-general .more-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 #ak-general .more-link{border:1px solid var(--viz-border);border-radius:16px;padding:14px;text-align:left;background:var(--viz-card)}
+#ak-general .race-dashboard{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:12px}
+#ak-general .race-column{border:1px solid var(--viz-border);border-radius:18px;padding:16px;background:var(--viz-card);text-align:left;min-width:0}
+#ak-general .race-column:hover{border-color:var(--viz-accent)}
+#ak-general .race-column .race-stat{padding:8px 0;border-bottom:1px solid var(--viz-border)}
+#ak-general .race-column .race-stat:last-child{border-bottom:0}
 #ak-general .screen-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 #ak-general .screen-title p{margin-top:4px}
 #ak-general .racebar{height:16px;border-radius:999px;background:var(--viz-border);overflow:hidden;display:flex}
@@ -79,6 +84,7 @@ button,select,input{font:inherit}
  #ak-general{padding-bottom:24px}
  #ak-general .desktop-tabs{display:flex}
  #ak-general .mobile-nav{display:none}
+ #ak-general .race-dashboard{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 </style>
 
@@ -86,10 +92,10 @@ button,select,input{font:inherit}
   <div class="flex items-center justify-between gap-3">
     <div>
       <div class="app-kicker">Alaska Votes</div>
-      <div class="app-title">Choose Your Race</div>
+      <div class="app-title">Choose Your Contest</div>
     </div>
     <select id="raceSelect" class="race-select" aria-label="Select race">
-      <option value="" selected disabled>Choose your race…</option>
+      <option value="" selected disabled>Choose your contest…</option>
       <option value="senate">U.S. Senate</option>
       <option value="house">U.S. House</option>
       <option value="governor">Governor</option>
@@ -99,6 +105,54 @@ button,select,input{font:inherit}
     </select>
   </div>
 </header>
+
+<section id="raceLanding" class="space-y-4">
+  <div class="screen-title">
+    <div>
+      <h2 class="text-xl font-medium">Choose a race to explore</h2>
+      <p class="text-sm text-[var(--viz-muted)]">Start with the statewide snapshot, then open any race for candidates, issues, money, records and comparisons.</p>
+    </div>
+    <span class="viz-badge">2026</span>
+  </div>
+  <div class="race-dashboard">
+    <button type="button" class="race-column" data-race-card="senate">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">U.S. Senate</div><span class="viz-badge">Statewide</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Current field</div><div class="viz-stat-value">4</div><div class="text-sm">Top-four candidates</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Primary leader</div><div class="font-medium">Mary Peltola · 48.09%</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Money race</div><div class="font-medium">$15.58M vs $8.50M</div><div class="text-sm">Peltola vs D. S. Sullivan receipts snapshot</div></div>
+    </button>
+    <button type="button" class="race-column" data-race-card="house">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">U.S. House</div><span class="viz-badge">At-large</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Current field</div><div class="viz-stat-value">4</div><div class="text-sm">Preliminary top four</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Primary leader</div><div class="font-medium">Nick Begich · 46.12%</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Runner-up</div><div class="font-medium">Bill Hill · 30.89%</div></div>
+    </button>
+    <button type="button" class="race-column" data-race-card="governor">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">Governor</div><span class="viz-badge">Statewide</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Current field</div><div class="viz-stat-value">4</div><div class="text-sm">Governor/Lt. Governor tickets</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Primary leader</div><div class="font-medium">Kreiss-Tomkins / Johnson · 21.62%</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Second</div><div class="font-medium">Begich / Hnilicka · 20.07%</div></div>
+    </button>
+    <button type="button" class="race-column" data-race-card="state-senate">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">State Senate</div><span class="viz-badge">Districts</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">On 2026 ballot</div><div class="viz-stat-value">10</div><div class="text-sm">Senate districts</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Crowded primary</div><div class="font-medium">District S</div><div class="text-sm">Narrowed to four</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Incumbents shown</div><div class="font-medium">7 districts</div></div>
+    </button>
+    <button type="button" class="race-column" data-race-card="state-house">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">State House</div><span class="viz-badge">Districts</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">On 2026 ballot</div><div class="viz-stat-value">40</div><div class="text-sm">All House districts</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Crowded primaries</div><div class="font-medium">4 districts</div><div class="text-sm">23, 29, 30 and 37 narrowed to four</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Race lookup</div><div class="font-medium">District-by-district</div></div>
+    </button>
+    <button type="button" class="race-column" data-race-card="ballot">
+      <div class="flex items-start justify-between gap-2"><div class="font-medium">Ballot Measures</div><span class="viz-badge">Statewide</span></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Measures tracked</div><div class="viz-stat-value">3</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Topics</div><div class="font-medium">Campaign money · election system · voter qualification</div></div>
+      <div class="race-stat"><div class="text-sm text-[var(--viz-muted)]">Research</div><div class="font-medium">YES/NO effects + money trail</div></div>
+    </button>
+  </div>
+</section>
 
 <section id="racePlaceholder" class="hidden space-y-4">
   <div class="screen-title">
@@ -118,7 +172,7 @@ button,select,input{font:inherit}
   <div class="viz-callout"><strong>All-race navigation is live.</strong> Statewide contests, legislative districts and ballot measures now use the same selectable race framework so each contest can carry candidate profiles, issue positions, records, money and comparisons.</div>
 </section>
 
-<section class="space-y-3">
+<section class="space-y-3 hidden">
   <div class="flex flex-wrap items-start justify-between gap-3">
     <div>
       <h2 class="text-xl font-medium">The race after the primary</h2>
@@ -582,7 +636,7 @@ button,select,input{font:inherit}
   'state-house':{title:'Alaska State House · 2026',subtitle:'All 40 House districts are on the ballot',districts:Object.keys(legislativeCandidates.house),cards:[['District race','Choose any House district to view its 2026 field.'],['Primary status','Districts 23, 29, 30 and 37 were narrowed to four; other fields shown had four or fewer certified candidates.']]},
   ballot:{title:'Alaska Ballot Measures · 2026',subtitle:'Statewide ballot initiatives and constitutional questions',candidates:['Ballot Measure 1 — Restore campaign contribution limits','Ballot Measure 2 — Restore partisan primaries and end ranked-choice general elections','Ballot Measure 3 — Require U.S. citizenship as a voter qualification'],cards:[['Ballot Measure 1 · Campaign contribution limits','Would restore limits on contributions to candidates and political groups in Alaska. The app will show the ballot language, what a YES or NO vote does, arguments from supporters and opponents, major campaign funders and election results.'],['Ballot Measure 2 · Election system','Would replace Alaska’s open top-four primary and ranked-choice general election system with partisan primaries and conventional general elections. The guide will explain how voting would change, the YES/NO consequences, supporters, opponents and campaign funding.'],['Ballot Measure 3 · Voter qualification','Would add an explicit U.S.-citizenship voting qualification to Alaska’s Constitution. The guide will show the exact proposal, practical effect, YES/NO consequences and arguments on both sides.'],['Ballot initiative research','Ballot measures are treated as full races in Alaska Votes—not as an appendix. Each measure gets a neutral issue guide, campaign-money view, endorsements/supporters and opponents, source links and results tracking.']]}
  };
- const raceSelect=document.getElementById('raceSelect'),racePlaceholder=document.getElementById('racePlaceholder'),placeholderTitle=document.getElementById('placeholderTitle'),placeholderSubtitle=document.getElementById('placeholderSubtitle'),raceCards=document.getElementById('raceCards'),districtPicker=document.getElementById('districtPicker'),districtSelect=document.getElementById('districtSelect'),selectedRaceDetail=document.getElementById('selectedRaceDetail');
+ const raceSelect=document.getElementById('raceSelect'),raceLanding=document.getElementById('raceLanding'),racePlaceholder=document.getElementById('racePlaceholder'),placeholderTitle=document.getElementById('placeholderTitle'),placeholderSubtitle=document.getElementById('placeholderSubtitle'),raceCards=document.getElementById('raceCards'),districtPicker=document.getElementById('districtPicker'),districtSelect=document.getElementById('districtSelect'),selectedRaceDetail=document.getElementById('selectedRaceDetail');
  function renderDistrictDetail(){
   const kind=raceSelect.value==='state-senate'?'Senate':'House';
   const d=districtSelect.value;
@@ -592,8 +646,9 @@ button,select,input{font:inherit}
  function switchRace(id){
   const meta=raceCatalog[id]||raceCatalog.senate;
   const senate=id==='senate';
+  raceLanding.classList.add('hidden');
   document.querySelectorAll('#ak-general > section, #ak-general > nav.desktop-tabs, #ak-general > nav.mobile-nav, #ak-general > p').forEach(el=>{
-   if(el.id==='racePlaceholder')return;
+   if(el.id==='racePlaceholder'||el.id==='raceLanding')return;
    el.classList.toggle('hidden',!senate);
   });
   if(senate){racePlaceholder.classList.add('hidden');openTab('overview');}
@@ -609,6 +664,7 @@ button,select,input{font:inherit}
   }
  }
  raceSelect.addEventListener('change',()=>switchRace(raceSelect.value));
+ document.querySelectorAll('[data-race-card]').forEach(card=>card.addEventListener('click',()=>{raceSelect.value=card.dataset.raceCard;switchRace(card.dataset.raceCard)}));
  districtSelect.addEventListener('change',renderDistrictDetail);
  const tabs=document.querySelectorAll('.tab'),mobileTabs=document.querySelectorAll('.mobile-tab'),panels=document.querySelectorAll('.panel');
  function openTab(id){
